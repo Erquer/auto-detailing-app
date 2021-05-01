@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { toRem } from '../utils/utils';
 
 export const StyledMainContainer = styled.div`
     flex-basis: calc(100% - 100%/12);

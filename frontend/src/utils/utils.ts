@@ -1,4 +1,4 @@
 
 export const toRem = (pixels: number) => {
-    return pixels/16;
+    return `${pixels/16}rem`;
 }

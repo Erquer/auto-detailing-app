@@ -9,7 +9,7 @@ export const StyledDashboardWrapper = styled.div`
     flex-flow: row;
     flex-wrap: wrap;
     box-sizing: border-box;
-    height: 400px;
+    height: ${toRem(400)};
     
 `;
 

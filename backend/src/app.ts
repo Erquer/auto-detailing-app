@@ -1,15 +1,18 @@
 import express from 'express';
+import {clients} from './Routes/Clients';
+
+const {user, password} = require('../database.json');
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const { Sequelize } = require('sequelize');
-const sequelize = new Sequelize('postgres', 'postgres', 'Polsat131', {
+const {Sequelize} = require('sequelize');
+export const sequelize = new Sequelize('postgres', user, password, {
     host: 'localhost',
     dialect: 'postgres'
 });
 
 
 const app = express();
-const port = 3000;
+const port = 3030;
 app.get('/', (req, res) => {
     res.send('My work is done');
 });
@@ -23,3 +26,5 @@ try {
 } catch (error) {
     console.error('Unable to connect to the database:', error);
 }
+
+app.use('/clients', clients);

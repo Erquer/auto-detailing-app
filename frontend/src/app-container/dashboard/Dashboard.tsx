@@ -3,7 +3,6 @@ import { StyledDashboardElement, StyledDashboardWrapper } from './Dashboard.styl
 
 
 export const Dashboard = () => {
-
     return(
         <StyledDashboardWrapper>
             <StyledDashboardElement>Pierwszy</StyledDashboardElement>
