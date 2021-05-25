@@ -8,6 +8,7 @@ import { BrowserRouter } from 'react-router-dom';
 const StyledAppContainer = styled.div`
   display: flex;
   box-sizing: border-box;
+  flex: 1;
   flex-flow: row;
   height: 100%;
 `;
