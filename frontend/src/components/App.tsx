@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { MenuContainer } from './menu/MenuContainer';
 import { MainContainer } from './app-container/MainContainer';
-import './styles.css';
+import '../styles.css';
 import { BrowserRouter } from 'react-router-dom';
 
 const StyledAppContainer = styled.div`
@@ -21,7 +21,6 @@ function App() {
         <MainContainer />
       </StyledAppContainer>
     </BrowserRouter>
-    
   );
 }
 

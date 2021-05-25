@@ -1,11 +1,12 @@
 import React from "react";
+import Button from "../../../Button/Button";
 
 const Calendar = () => (
   <div>
     <h2>Kalendarz</h2>
     <div>kalendarz</div>
-    <button>Kliknij mnie</button>
+    <Button innerText="DODAJ ZAMÓWIENIE" to="/orders" />
   </div>
 );
 
-export default Calendar
+export default Calendar;

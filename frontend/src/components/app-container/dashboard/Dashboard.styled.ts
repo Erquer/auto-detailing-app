@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { toRem } from "../../utils/utils";
+import { toRem } from "../../../utils/utils";
 
 export const StyledDashboardWrapper = styled.div`
   display: grid;
