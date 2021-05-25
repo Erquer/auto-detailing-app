@@ -12,6 +12,7 @@ export const StyledDashboardWrapper = styled.div`
 `;
 
 export const StyledDashboardElement = styled.div<{ basis?: string }>`
+  position: relative;
   flex-basis: ${(props) => props.basis || "calc(100%/2)"};
   min-height: ${toRem(150)};
   padding: 1rem;
@@ -28,7 +29,7 @@ export const StyledDashboardElement = styled.div<{ basis?: string }>`
     grid-column: 3/5;
     grid-row: 1;
   }
-  
+
   &:nth-child(3) {
     grid-column: 3/5;
     grid-row: 2;
