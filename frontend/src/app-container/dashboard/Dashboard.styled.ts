@@ -28,6 +28,7 @@ export const StyledDashboardElement = styled.div<{ basis?: string }>`
     grid-column: 3/5;
     grid-row: 1;
   }
+  
   &:nth-child(3) {
     grid-column: 3/5;
     grid-row: 2;
