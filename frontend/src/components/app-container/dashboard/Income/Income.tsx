@@ -40,7 +40,7 @@ const Income = () => {
   <div>
     <span style={{display:'inline-flex'}}>
     <h2>Przychody</h2>
-    <Button innerText="SPRAWDŹ CAŁĄ HISTORIE" to="/orders" />
+    {/* <Button innerText="SPRAWDŹ CAŁĄ HISTORIE" to="/orders" /> */}
     </span>
     <Bar 
     height={35}
