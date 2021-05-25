@@ -100,3 +100,5 @@ modules.xml
 /backend/db.config.ts
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij+all
+
+.env
