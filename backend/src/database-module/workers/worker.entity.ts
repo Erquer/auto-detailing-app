@@ -18,5 +18,5 @@ export class Workers {
   salary: number;
 
   @Column()
-  workTime: number;
+  workHours: number;
 }

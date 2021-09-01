@@ -6,6 +6,7 @@ import {
   CreateDateColumn,
   ManyToMany,
   JoinColumn,
+  JoinTable,
 } from 'typeorm';
 import { Client } from '../clients/client.entity';
 import { Car } from '../cars/car.entity';
@@ -39,5 +40,6 @@ export class Order {
   car: Car;
 
   @ManyToMany(() => Service)
-  service: Service;
+  @JoinTable()
+  service: Service[];
 }
