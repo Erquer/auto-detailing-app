@@ -8,7 +8,7 @@ import Income from "./Income/Income";
 import Workers from "./Workers/Workers";
 import Orders from "./Orders/Orders";
 
-export const Dashboard = () => {
+const Dashboard = () => {
   return (
     <StyledDashboardWrapper>
       <StyledDashboardElement>
@@ -26,3 +26,5 @@ export const Dashboard = () => {
     </StyledDashboardWrapper>
   );
 };
+
+export default Dashboard;

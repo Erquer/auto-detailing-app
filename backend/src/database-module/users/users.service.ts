@@ -20,4 +20,11 @@ export class UsersService {
   async remove(id: string): Promise<void> {
     await this.usersRepository.delete(id);
   }
+
+  async add(username: string, password: string): Promise<User> {
+    const user = new User();
+    user.firstName = username;
+    user.password = password;
+    return this.usersRepository.save(user);
+  }
 }

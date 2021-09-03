@@ -1,15 +1,14 @@
-import React from 'react';
+import React, {lazy} from 'react';
 import { Route } from 'react-router';
-import { Dashboard } from './dashboard/Dashboard';
 import { StyledMainContainer } from './MainContainer.styled';
-export const MainContainer = () => {
 
-    return (
+const Dashboard = lazy(() => import('./dashboard/Dashboard'));
+const Clients = lazy(() => import('../clients/Clients'));
+export const MainContainer = () => (
         <StyledMainContainer>
-            <Route path='/' exact component={Dashboard}/>
-            <Route path='/clients'>Tu będą clienci</Route>
+            <Route path='/' exact component={Dashboard} />
+            <Route path='/clients' exact component={Clients} />
             <Route path='/services'>Tu będą Usługi </Route>
             <Route path='/orders'>Tu będą zamówienia</Route>
         </StyledMainContainer>
-    )
-}
+);

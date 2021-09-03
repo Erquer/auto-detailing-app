@@ -18,7 +18,7 @@ export const StyledDashboardElement = styled.div<{ basis?: string }>`
   padding: 1rem;
   background-color: #fff;
   border-radius: 20px;
-  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
 
   &:nth-child(1) {
     grid-column: 1/3;
