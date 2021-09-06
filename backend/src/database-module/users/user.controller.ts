@@ -11,7 +11,6 @@ export class UserController {
   }
   @Get('/all')
   async getAll(): Promise<User[]> {
-    console.log('Test');
     return this.userService.findAll();
   }
   @Post('/addUser')
@@ -19,5 +18,12 @@ export class UserController {
     @Body() user: { firstName: string; password: string },
   ): Promise<User> {
     return this.userService.add(user.firstName, user.password);
+  }
+  @Post('/login')
+  async login(
+    @Body() user: { firstName: string; password: string },
+  ): Promise<boolean> {
+    const userToLogin = await this.userService.findByName(user.firstName);
+    return user.password === userToLogin.password;
   }
 }

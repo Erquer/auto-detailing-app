@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export interface MenuItemLinkProps {
-    icon: JSX.Element;
+    icon?: JSX.Element;
     primary: string;
     to: string;
 }
@@ -16,7 +16,7 @@ export const MenuItemLink = ({icon, primary, to}: MenuItemLinkProps) => {
     
     return (
         <ListItem button component={CustomLink}>
-            <ListItemIcon>{icon}</ListItemIcon>
+            {icon && <ListItemIcon>{icon}</ListItemIcon>}
             <ListItemText primary={primary}/>
         </ListItem>
     )

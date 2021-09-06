@@ -12,6 +12,7 @@ export const MenuContainer = () => {
                 <ListItem button component={MenuItemLink} to='/clients' icon={<ImAccessibility />} primary='Clients' />
                 <ListItem button component={MenuItemLink} to='/services' icon={<ImCog />} primary='Services' />
                 <ListItem button component={MenuItemLink} to='/orders' icon={<ImBug />} primary='Orders' />
+                <ListItem button component={MenuItemLink} to='/login' primary='Login' />
             </StyledMenuContainer>
         </Switch>    
     );

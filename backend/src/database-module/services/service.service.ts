@@ -20,4 +20,60 @@ export class ServiceService {
   async remove(id: string): Promise<void> {
     await this.serviceRepository.delete(id);
   }
+
+  async initServices(): Promise<string> {
+    try {
+      const services = [
+        {
+          serviceName: 'Mycie one-step',
+          serviceCost: 50,
+          serviceDuration: 3,
+          servicePrize: 70,
+        },
+        {
+          serviceName: 'Mycie wieloetapowe',
+          serviceCost: 80,
+          serviceDuration: 5,
+          servicePrize: 100,
+        },
+        {
+          serviceName: 'Woskowanie 1',
+          serviceCost: 30,
+          serviceDuration: 2,
+          servicePrize: 60,
+        },
+        {
+          serviceName: 'Woskowanie 2',
+          serviceCost: 40,
+          serviceDuration: 3,
+          servicePrize: 80,
+        },
+        {
+          serviceName: 'Woskowanie 3',
+          serviceCost: 60,
+          serviceDuration: 7,
+          servicePrize: 100,
+        },
+        {
+          serviceName: 'Polerowanie zwykłe',
+          serviceCost: 80,
+          serviceDuration: 8,
+          servicePrize: 120,
+        },
+      ];
+
+      for (let i = 0; i < 6; i++) {
+        const service = new Service();
+        service.serviceName = services[i].serviceName;
+        service.serviceCost = services[i].serviceCost;
+        service.serviceDurationTime = services[i].serviceDuration;
+        service.servicePrize = services[i].servicePrize;
+
+        await this.serviceRepository.save(service);
+      }
+      return 'Services initiated';
+    } catch (e) {
+      console.error(e);
+    }
+  }
 }
