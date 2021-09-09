@@ -20,4 +20,9 @@ export class CarService {
   async remove(id: string): Promise<void> {
     await this.carRepository.delete(id);
   }
+
+  async addCar(car: Car): Promise<boolean> {
+    const res = await this.carRepository.save(car);
+    return !!res;
+  }
 }

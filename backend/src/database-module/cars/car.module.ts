@@ -6,5 +6,6 @@ import { carProviders } from './car.providers';
 @Module({
   imports: [DatabaseModule],
   providers: [...carProviders, CarService],
+  exports: [CarService],
 })
 export class CarModule {}
