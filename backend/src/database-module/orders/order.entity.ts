@@ -13,7 +13,7 @@ import { Car } from '../cars/car.entity';
 import { Service } from '../services/service.entity';
 import { Workers } from '../workers/worker.entity';
 
-@Entity()
+@Entity('orders')
 export class Order {
   @PrimaryGeneratedColumn()
   id: number;

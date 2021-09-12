@@ -20,4 +20,11 @@ export class ClientService {
   async remove(id: string): Promise<void> {
     await this.clientRepository.delete(id);
   }
+
+  async addClient(client: Client) {
+    await this.clientRepository.save(client);
+  }
+  async updateClient(clientId: number, client: Client) {
+    await this.clientRepository.update(clientId, client);
+  }
 }

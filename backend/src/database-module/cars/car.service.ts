@@ -25,4 +25,10 @@ export class CarService {
     const res = await this.carRepository.save(car);
     return !!res;
   }
+
+  async updateCar(carId, car: Car): Promise<any> {
+    const res = await this.carRepository.update(carId, car);
+    console.log(res);
+    return res;
+  }
 }

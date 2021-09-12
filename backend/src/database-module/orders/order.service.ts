@@ -13,11 +13,15 @@ export class OrderService {
     return this.orderRepository.find();
   }
 
-  findOne(id: string): Promise<Order> {
+  findOne(id: number): Promise<Order> {
     return this.orderRepository.findOne(id);
   }
 
   async remove(id: string): Promise<void> {
     await this.orderRepository.delete(id);
+  }
+
+  async addOrder(order: Order) {
+    await this.orderRepository.save(order);
   }
 }

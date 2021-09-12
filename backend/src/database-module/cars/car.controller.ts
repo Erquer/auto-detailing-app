@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { CarService } from './car.service';
 import { Car } from './car.entity';
 import { Column } from 'typeorm';
@@ -33,5 +33,11 @@ export class CarController {
     } catch (e) {
       console.error(e);
     }
+  }
+
+  @Post('/updateCar/:carId')
+  updateCar(@Param('carId') carId: number, @Body() car: Car) {
+    const updatedCat = this.carService.updateCar(carId, car);
+    console.log(updatedCat);
   }
 }

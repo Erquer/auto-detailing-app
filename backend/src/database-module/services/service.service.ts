@@ -23,6 +23,7 @@ export class ServiceService {
 
   async initServices(): Promise<string> {
     try {
+      const isInitialized = await this.serviceRepository.find();
       const services = [
         {
           serviceName: 'Mycie one-step',
@@ -61,17 +62,20 @@ export class ServiceService {
           servicePrize: 120,
         },
       ];
+      if (isInitialized.length === 0) {
+        for (let i = 0; i < 6; i++) {
+          const service = new Service();
+          service.serviceName = services[i].serviceName;
+          service.serviceCost = services[i].serviceCost;
+          service.serviceDurationTime = services[i].serviceDuration;
+          service.servicePrize = services[i].servicePrize;
 
-      for (let i = 0; i < 6; i++) {
-        const service = new Service();
-        service.serviceName = services[i].serviceName;
-        service.serviceCost = services[i].serviceCost;
-        service.serviceDurationTime = services[i].serviceDuration;
-        service.servicePrize = services[i].servicePrize;
-
-        await this.serviceRepository.save(service);
+          await this.serviceRepository.save(service);
+        }
+        return 'Services initiated';
+      } else {
+        return 'Services already initialized';
       }
-      return 'Services initiated';
     } catch (e) {
       console.error(e);
     }
