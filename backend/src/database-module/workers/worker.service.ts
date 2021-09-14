@@ -20,4 +20,12 @@ export class WorkerService {
   async remove(id: string): Promise<void> {
     await this.workersRepository.delete(id);
   }
+
+  async addWorker(worker: Workers) {
+    await this.workersRepository.save(worker);
+  }
+
+  async updateWorker(workerId: number, worker: Workers) {
+    return await this.workersRepository.update(workerId, worker);
+  }
 }

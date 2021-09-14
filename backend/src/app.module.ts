@@ -12,6 +12,8 @@ import { ClientModule } from './database-module/clients/client.module';
 import { ClientController } from './database-module/clients/client.controller';
 import { OrderModule } from './database-module/orders/order.module';
 import { OrderController } from './database-module/orders/order.controller';
+import { WorkerModule } from './database-module/workers/worker.module';
+import { WorkerController } from './database-module/workers/worker.controller';
 
 @Module({
   imports: [
@@ -21,6 +23,7 @@ import { OrderController } from './database-module/orders/order.controller';
     CarModule,
     ClientModule,
     OrderModule,
+    WorkerModule,
   ],
   controllers: [
     AppController,
@@ -29,6 +32,7 @@ import { OrderController } from './database-module/orders/order.controller';
     CarController,
     ClientController,
     OrderController,
+    WorkerController,
   ],
   providers: [AppService],
 })

@@ -6,5 +6,6 @@ import { workerProviders } from './worker.providers';
 @Module({
   imports: [DatabaseModule],
   providers: [...workerProviders, WorkerService],
+  exports: [WorkerService],
 })
 export class WorkerModule {}

@@ -1,5 +1,4 @@
-import {Body, Controller, Get, Param, Post} from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { ClientService } from './client.service';
 import { Client } from './client.entity';
 
