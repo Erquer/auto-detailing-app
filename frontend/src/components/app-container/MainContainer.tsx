@@ -3,7 +3,7 @@ import { Route } from 'react-router';
 import { StyledMainContainer } from './MainContainer.styled';
 
 const Dashboard = lazy(() => import('./dashboard/Dashboard'));
-const Clients = lazy(() => import('../clients/Clients'));
+const Clients = lazy(() => import('../Clients/Clients'));
 const Login = lazy(() => import('../LoginPage/LoginPage'));
 export const MainContainer = () => (
         <StyledMainContainer>
