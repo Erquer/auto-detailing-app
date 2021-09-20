@@ -5,8 +5,6 @@ import App from './components/App';
 
 
 ReactDOM.render(
-  <React.Suspense fallback={'Loading...'} >
-    <App />
-  </React.Suspense>,
+    <App />,
   document.getElementById('root')
 );

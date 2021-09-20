@@ -8,6 +8,7 @@ const Dashboard = lazy(() => import('./dashboard/Dashboard'));
 const Clients = lazy(() => import('../Clients/Clients'));
 const Login = lazy(() => import('../LoginPage/LoginPage'));
 export const MainContainer = () => (
+    <React.Suspense fallback={'Loading....'}>
         <StyledMainContainer>
             <Provider store={reduxStore}>
                 <Route path='/' exact component={Dashboard} />
@@ -17,4 +18,5 @@ export const MainContainer = () => (
                 <Route path='/login' component={Login}/>
             </Provider>
         </StyledMainContainer>
+    </React.Suspense>
 );
