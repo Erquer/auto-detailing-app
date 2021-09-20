@@ -20,4 +20,9 @@ export class OrderController {
   addOrder(@Body() order: Order) {
     return this.orderService.addOrder(order);
   }
+
+  @Get('/clientOrders/:clientId')
+  async getClientOrders(@Param('clientId') clientId): Promise<Order[]> {
+    return this.orderService.getClientOrders(clientId);
+  }
 }

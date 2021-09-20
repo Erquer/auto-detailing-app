@@ -1,5 +1,4 @@
-import React from "react";
-import Button from "../../../Button/Button";
+import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
 interface DataProps {
@@ -45,7 +44,6 @@ const Income = () => {
     <Bar 
     height={35}
     width={150}
-    type='bar'
     data={getData}
     />
     

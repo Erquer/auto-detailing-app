@@ -20,4 +20,11 @@ export class ClientController {
   updateClient(@Param('clientId') clientId: number, @Body() client: Client) {
     return this.clientService.updateClient(clientId, client);
   }
+
+  @Get('/:clientId')
+  async getClientDetails(@Param('clientId') clientId: number): Promise<Client> {
+    const res = await this.clientService.getClientDetails(clientId);
+    console.log(res);
+    return res;
+  }
 }

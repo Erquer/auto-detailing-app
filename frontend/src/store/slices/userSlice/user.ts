@@ -26,16 +26,19 @@ export const userSlice = createSlice({
         setIsLogged: (state, action) => {
             state.isLogged = action.payload.isLogged;
             state.username = action.payload.username;
+        },
+        startLogging: (state) => {
+            state.isLogged = false;
+            state.message = 'Logging'
         }
-
     }
 });
 
-export const {setIsLogged} = userSlice.actions;
+export const {setIsLogged, setLoggedSuccesful, startLogging} = userSlice.actions;
 
 export const loginUser = (username: string, password:string) => async (dispatch: AppDispatch) => {
     try{
-        dispatch()
+        dispatch(startLogging());
         const { data } = await axios.post('/users', {params:{ username: username }});
         console.log(data);
     } catch (error) {

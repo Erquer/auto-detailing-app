@@ -27,4 +27,10 @@ export class ClientService {
   async updateClient(clientId: number, client: Client) {
     await this.clientRepository.update(clientId, client);
   }
+
+  async getClientDetails(clientId: number) {
+    return this.clientRepository.findOne(clientId, {
+      relations: ['cars'],
+    });
+  }
 }
