@@ -7,6 +7,8 @@ import {
   ManyToMany,
   JoinColumn,
   JoinTable,
+  OneToMany,
+  ManyToOne,
 } from 'typeorm';
 import { Client } from '../clients/client.entity';
 import { Car } from '../cars/car.entity';
@@ -31,7 +33,7 @@ export class Order {
   @JoinColumn()
   worker: Workers;
 
-  @OneToOne(() => Client)
+  @ManyToOne(() => Client, (client) => client.order)
   @JoinColumn()
   client: Client;
 

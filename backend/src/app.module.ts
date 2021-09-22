@@ -14,6 +14,12 @@ import { OrderModule } from './database-module/orders/order.module';
 import { OrderController } from './database-module/orders/order.controller';
 import { WorkerModule } from './database-module/workers/worker.module';
 import { WorkerController } from './database-module/workers/worker.controller';
+import { databaseProviders } from './database-module/database.providers';
+import { clientProviders } from './database-module/clients/client.providers';
+import { workerProviders } from './database-module/workers/worker.providers';
+import { carProviders } from './database-module/cars/car.providers';
+import { orderProviders } from './database-module/orders/order.providers';
+import { serviceProviders } from './database-module/services/service.providers';
 
 @Module({
   imports: [
@@ -34,6 +40,14 @@ import { WorkerController } from './database-module/workers/worker.controller';
     OrderController,
     WorkerController,
   ],
-  providers: [AppService],
+  providers: [
+    AppService,
+    ...databaseProviders,
+    ...clientProviders,
+    ...workerProviders,
+    ...carProviders,
+    ...orderProviders,
+    ...serviceProviders,
+  ],
 })
 export class AppModule {}
