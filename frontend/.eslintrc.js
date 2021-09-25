@@ -14,6 +14,8 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
+    'react/jsx-uses-react': 1,
+    'react/jsx-uses-vars': 1,
     'object-curly-newline': 'off',
     'react/jsx-filename-extension': [
       2,
@@ -39,15 +41,7 @@ module.exports = {
     'operator-linebreak': [
       'error',
       'after',
-      {
-        overrides: {
-          ':': 'before',
-          files: ['*.ts'],
-          rules: {
-            'no-undef': 'off',
-          },
-        },
-      },
+      { overrides: { '?': 'before', ':': 'before' } },
     ],
     'comma-spacing': ['error', { before: false, after: true }],
   },
@@ -58,4 +52,15 @@ module.exports = {
       },
     },
   },
+  globals: {
+    JSX: true,
+  },
+  overrides: [
+    {
+      files: ['*.ts'],
+      rules: {
+        'no-undef': 'off',
+      },
+    },
+  ],
 };

@@ -10,7 +10,7 @@ export interface MenuItemLinkProps {
 
 export const MenuItemLink = ({ icon, primary, to }: MenuItemLinkProps) => {
   const CustomLink = React.useMemo(
-    () => React.forwardRef((linkProps, ref) => <Link to={to} {...linkProps} />),
+    () => React.forwardRef((linkProps) => <Link to={to} {...linkProps} />),
     [to],
   );
 

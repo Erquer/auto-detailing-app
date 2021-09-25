@@ -28,7 +28,7 @@ const schedulerData = [
 const Calendar = () => {
   const date = new Date();
   const [currentDate, setCurrentDate] = useState(date);
-  const currentDateChange = (currentDate: Date) => setCurrentDate(currentDate);
+  const currentDateChange = (newDate: Date) => setCurrentDate(newDate);
   return (
     <StyledCalendar>
       <StyledHeading>Kalendarz</StyledHeading>
