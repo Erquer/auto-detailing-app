@@ -1,11 +1,10 @@
-import styled from "styled-components";
-import { toRem } from "../../../utils/utils";
+import styled from 'styled-components';
+import { toRem } from '../../../utils/utils';
 
 export const StyledDashboardWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  background-color: #f1f1f1;
   height: 100%;
   padding: 30px;
   gap: 30px;
@@ -13,7 +12,7 @@ export const StyledDashboardWrapper = styled.div`
 
 export const StyledDashboardElement = styled.div<{ basis?: string }>`
   position: relative;
-  flex-basis: ${(props) => props.basis || "calc(100%/2)"};
+  flex-basis: ${(props) => props.basis || 'calc(100%/2)'};
   min-height: ${toRem(150)};
   padding: 1rem;
   background-color: #fff;

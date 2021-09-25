@@ -1,5 +1,5 @@
-import React from "react";
-import { StyledButtonAsLink } from "./Button.styled";
+import React from 'react';
+import { StyledButtonAsLink } from './Button.styled';
 
 interface ButtonProps {
   to: string;

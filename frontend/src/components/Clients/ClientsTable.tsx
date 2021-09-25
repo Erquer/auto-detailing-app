@@ -1,11 +1,11 @@
-import {FC, useEffect, useState} from "react";
-import {DataGrid, GridColDef, GridRowData} from '@mui/x-data-grid';
-import {ClientService} from "../../services/ClientService";
+import { FC, useEffect, useState } from 'react';
+import { DataGrid, GridColDef, GridRowData } from '@mui/x-data-grid';
+import { ClientService } from '../../services/ClientService';
 
 export interface Client {
-    id: number;
-    firstName: string;
-    lastName: string;
+  id: number;
+  firstName: string;
+  lastName: string;
 }
 
 // export const ClientsTable: FC<{}> = () => {

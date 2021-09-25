@@ -1,12 +1,12 @@
-import React from "react";
-import Calendar from "./Calendar/Calendar";
+import React from 'react';
+import Calendar from './Calendar/Calendar';
 import {
   StyledDashboardElement,
   StyledDashboardWrapper,
-} from "./Dashboard.styled";
-import Income from "./Income/Income";
-import Workers from "./Workers/Workers";
-import Orders from "./Orders/Orders";
+} from './Dashboard.styled';
+import Income from './Income/Income';
+import Workers from './Workers/Workers';
+import Orders from './Orders/Orders';
 
 const Dashboard = () => {
   return (

@@ -1,4 +1,1 @@
-
-export const toRem = (pixels: number) => {
-    return `${pixels/16}rem`;
-}
+export const toRem = (pixels: number) => `${pixels / 16}rem`;

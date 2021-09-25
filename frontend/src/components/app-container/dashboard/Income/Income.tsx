@@ -14,40 +14,34 @@ const Income = () => {
     console.log(rawData.incomes);
   }, []);
 
-  const getData = () =>{
-    return(
-      {
-        labels: data.map(d => d.date),
-        datasets: [{
+  const getData = () => {
+    return {
+      labels: data.map((d) => d.date),
+      datasets: [
+        {
           label: 'Incomes',
-          data: data.map(d => d.income),
+          data: data.map((d) => d.income),
           backgroundColor: 'blue',
           legend: {
-            display: false
+            display: false,
           },
           title: {
-            display: false
-          }
-        }]
-        
-      }
-    )
+            display: false,
+          },
+        },
+      ],
+    };
+  };
 
-  }
-  
   return (
-  <div>
-    <span style={{display:'inline-flex'}}>
-    <h2>Przychody</h2>
-    {/* <Button innerText="SPRAWDŹ CAŁĄ HISTORIE" to="/orders" /> */}
-    </span>
-    <Bar 
-    height={35}
-    width={150}
-    data={getData}
-    />
-    
-  </div>
-);}
+    <div>
+      <span style={{ display: 'inline-flex' }}>
+        <h2>Przychody</h2>
+        {/* <Button innerText="SPRAWDŹ CAŁĄ HISTORIE" to="/orders" /> */}
+      </span>
+      <Bar height={35} width={150} data={getData} />
+    </div>
+  );
+};
 
 export default Income;

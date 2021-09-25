@@ -1,50 +1,51 @@
-import {createSlice} from "@reduxjs/toolkit";
-import {AppDispatch} from "../rootReducer";
+import { createSlice } from '@reduxjs/toolkit';
 import axios from '../../../utils/axios';
+import { AppDispatch } from '../rootReducer';
 
 interface UserState {
-    username: string;
-    isLogged: boolean;
-    message: string
+  username: string;
+  isLogged: boolean;
+  message: string;
 }
 
 const initialState: UserState = {
-    username: '',
-    isLogged: false,
-    message: ''
-}
+  username: '',
+  isLogged: false,
+  message: '',
+};
 
 export const userSlice = createSlice({
-    name: 'user',
-    initialState: initialState,
-    reducers: {
-        setLoggedSuccesful: (state, action) => {
-            state.username = action.payload.username;
-            state.isLogged = true;
-            state.message = 'Logged successful';
-        },
-        setIsLogged: (state, action) => {
-            state.isLogged = action.payload.isLogged;
-            state.username = action.payload.username;
-        },
-        startLogging: (state) => {
-            state.isLogged = false;
-            state.message = 'Logging'
-        }
-    }
+  name: 'user',
+  initialState,
+  reducers: {
+    setLoggedSuccessful: (state, action) => {
+      state.username = action.payload.username;
+      state.isLogged = true;
+      state.message = 'Logged successful';
+    },
+    setIsLogged: (state, action) => {
+      state.isLogged = action.payload.isLogged;
+      state.username = action.payload.username;
+    },
+    startLogging: (state) => {
+      state.isLogged = false;
+      state.message = 'Logging';
+    },
+  },
 });
 
-export const {setIsLogged, setLoggedSuccesful, startLogging} = userSlice.actions;
+export const { setIsLogged, setLoggedSuccessful, startLogging } =
+  userSlice.actions;
 
-export const loginUser = (username: string, password:string) => async (dispatch: AppDispatch) => {
-    try{
-        dispatch(startLogging());
-        const { data } = await axios.post('/users', {params:{ username: username }});
-        console.log(data);
+export const loginUser =
+  (username: string, password: string) => async (dispatch: AppDispatch) => {
+    try {
+      dispatch(startLogging());
+      const { data } = await axios.post('/users', { params: { username } });
+      console.log(data, password);
     } catch (error) {
-        console.error(error);
-
+      console.error(error);
     }
-}
+  };
 
 export default userSlice.reducer;

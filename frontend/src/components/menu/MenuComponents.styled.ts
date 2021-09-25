@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { toRem } from "../../utils/utils";
-import { APPColors } from "../../utils/colors";
-import { ListItem, MenuList } from "@material-ui/core";
+import styled from 'styled-components';
+import { toRem } from '../../utils/utils';
+import { APPColors } from '../../utils/colors';
+import { ListItem, MenuList } from '@material-ui/core';
 
 export const StyledMenuContainer = styled(MenuList)`
   box-sizing: border-box;

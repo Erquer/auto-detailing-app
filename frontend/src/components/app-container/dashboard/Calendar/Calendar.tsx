@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import Paper from "@material-ui/core/Paper";
-import { ViewState } from "@devexpress/dx-react-scheduler";
+import React, { useState } from 'react';
+import Paper from '@material-ui/core/Paper';
+import { ViewState } from '@devexpress/dx-react-scheduler';
 import {
   Scheduler,
   DayView,
@@ -8,20 +8,20 @@ import {
   Toolbar,
   DateNavigator,
   TodayButton,
-} from "@devexpress/dx-react-scheduler-material-ui";
-import Button from "../../../Button/Button";
-import { StyledCalendar, StyledHeading } from "./Calendar.styled";
+} from '@devexpress/dx-react-scheduler-material-ui';
+import Button from '../../../Button/Button';
+import { StyledCalendar, StyledHeading } from './Calendar.styled';
 
 const schedulerData = [
   {
-    startDate: "2021-05-26T09:45",
-    endDate: "2021-05-26T11:00",
-    title: "Ford Mustang",
+    startDate: '2021-05-26T09:45',
+    endDate: '2021-05-26T11:00',
+    title: 'Ford Mustang',
   },
   {
-    startDate: "2021-05-26T12:00",
-    endDate: "2021-05-26T13:30",
-    title: "Porshe 911",
+    startDate: '2021-05-26T12:00',
+    endDate: '2021-05-26T13:30',
+    title: 'Porshe 911',
   },
 ];
 
@@ -48,7 +48,7 @@ const Calendar = () => {
           </Scheduler>
         </Paper>
       </div>
-      <div style={{ marginTop: "30px" }}>
+      <div style={{ marginTop: '30px' }}>
         <Button innerText="DODAJ ZAMÓWIENIE" to="/orders" />
       </div>
     </StyledCalendar>
