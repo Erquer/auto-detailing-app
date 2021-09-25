@@ -5,7 +5,7 @@ export const StyledDashboardWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: 30px;
+  gap: 50px;
 `;
 
 export const StyledDashboardElement = styled.div<{ basis?: string }>`
