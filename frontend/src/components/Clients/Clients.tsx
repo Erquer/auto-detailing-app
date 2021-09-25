@@ -8,6 +8,7 @@ const Clients: React.FC = () => {
   return (
     <div>
       <button
+        type="button"
         onClick={() => {
           dispatch(loginUser('Smok', 'Wawelski'));
         }}

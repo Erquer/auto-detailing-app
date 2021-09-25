@@ -1,6 +1,8 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
 
+const rawData = require('./income.data.json');
+
 interface DataProps {
   date: string;
   income: number;
@@ -9,29 +11,26 @@ interface DataProps {
 const Income = () => {
   const [data, setData] = React.useState<Array<DataProps>>([]);
   React.useEffect(() => {
-    const rawData = require('./income.data.json');
     setData(rawData.incomes);
     console.log(rawData.incomes);
   }, []);
 
-  const getData = () => {
-    return {
-      labels: data.map((d) => d.date),
-      datasets: [
-        {
-          label: 'Incomes',
-          data: data.map((d) => d.income),
-          backgroundColor: 'blue',
-          legend: {
-            display: false,
-          },
-          title: {
-            display: false,
-          },
+  const getData = () => ({
+    labels: data.map((d) => d.date),
+    datasets: [
+      {
+        label: 'Incomes',
+        data: data.map((d) => d.income),
+        backgroundColor: 'blue',
+        legend: {
+          display: false,
         },
-      ],
-    };
-  };
+        title: {
+          display: false,
+        },
+      },
+    ],
+  });
 
   return (
     <div>

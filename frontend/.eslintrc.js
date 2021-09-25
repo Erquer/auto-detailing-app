@@ -14,6 +14,7 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
+    'object-curly-newline': 'off',
     'react/jsx-filename-extension': [
       2,
       { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
@@ -41,6 +42,10 @@ module.exports = {
       {
         overrides: {
           ':': 'before',
+          files: ['*.ts'],
+          rules: {
+            'no-undef': 'off',
+          },
         },
       },
     ],

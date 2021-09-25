@@ -8,23 +8,21 @@ import Income from './Income/Income';
 import Workers from './Workers/Workers';
 import Orders from './Orders/Orders';
 
-const Dashboard = () => {
-  return (
-    <StyledDashboardWrapper>
-      <StyledDashboardElement>
-        <Calendar />
-      </StyledDashboardElement>
-      <StyledDashboardElement>
-        <Income />
-      </StyledDashboardElement>
-      <StyledDashboardElement>
-        <Workers />
-      </StyledDashboardElement>
-      <StyledDashboardElement>
-        <Orders />
-      </StyledDashboardElement>
-    </StyledDashboardWrapper>
-  );
-};
+const Dashboard = () => (
+  <StyledDashboardWrapper>
+    <StyledDashboardElement>
+      <Calendar />
+    </StyledDashboardElement>
+    <StyledDashboardElement>
+      <Income />
+    </StyledDashboardElement>
+    <StyledDashboardElement>
+      <Workers />
+    </StyledDashboardElement>
+    <StyledDashboardElement>
+      <Orders />
+    </StyledDashboardElement>
+  </StyledDashboardWrapper>
+);
 
 export default Dashboard;
