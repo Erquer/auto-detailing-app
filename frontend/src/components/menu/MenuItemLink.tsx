@@ -16,8 +16,8 @@ export const MenuItemLink = ({ icon, primary, to }: MenuItemLinkProps) => {
 
   return (
     <ListItem button component={CustomLink}>
-      {icon && <ListItemIcon>{icon}</ListItemIcon>}
-      <ListItemText primary={primary} />
+      {icon && <ListItemIcon style={{ color: '#fff' }}>{icon}</ListItemIcon>}
+      <ListItemText style={{ color: '#fff' }} primary={primary} />
     </ListItem>
   );
 };
