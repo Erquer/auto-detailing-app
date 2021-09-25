@@ -3,10 +3,12 @@ import { Route } from 'react-router';
 import { Provider } from 'react-redux';
 import reduxStore from '../../store/store';
 import Layout from './Layout/Layout';
+import Services from '../pages/Services/Services';
+import Orders from '../pages/Orders/Orders';
 
-const Dashboard = lazy(() => import('./dashboard/Dashboard'));
-const Clients = lazy(() => import('../Clients/Clients'));
-const Login = lazy(() => import('../LoginPage/LoginPage'));
+const Dashboard = lazy(() => import('../pages/Dashboard/Dashboard'));
+const Clients = lazy(() => import('../pages/Clients/Clients'));
+const Login = lazy(() => import('../pages/Login/Login'));
 
 export const MainContainer = () => (
   <React.Suspense fallback="Loading....">
@@ -14,8 +16,8 @@ export const MainContainer = () => (
       <Provider store={reduxStore}>
         <Route path="/" exact component={Dashboard} />
         <Route path="/clients" component={Clients} />
-        <Route path="/services">Tu będą Usługi </Route>
-        <Route path="/orders">Tu będą zamówienia</Route>
+        <Route path="/services" component={Services} />
+        <Route path="/orders" component={Orders} />
         <Route path="/login" component={Login} />
       </Provider>
     </Layout>

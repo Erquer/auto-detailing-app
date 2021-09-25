@@ -1,5 +1,5 @@
 import { AxiosResponse } from 'axios';
-import { Client } from '../components/Clients/ClientsTable';
+import { Client } from '../components/pages/Clients/ClientsTable';
 import axios from '../utils/axios';
 
 export class ClientService {

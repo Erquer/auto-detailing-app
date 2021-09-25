@@ -8,8 +8,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Button from '../../../Button/Button';
-import { StyledHeading } from '../Calendar/Calendar.styled';
 import { StyledOrders } from './Orders.styled';
+import { StyledHeading } from '../Calendar/Calendar.styled';
 
 const useStyles = makeStyles({
   table: {

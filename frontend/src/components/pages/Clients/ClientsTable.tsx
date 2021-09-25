@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import { DataGrid, GridColDef, GridRowData } from '@mui/x-data-grid';
-import { ClientService } from '../../services/ClientService';
+import { ClientService } from '../../../services/ClientService';
 
 export interface Client {
   id: number;

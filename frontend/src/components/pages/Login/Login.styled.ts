@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const StyledLoginPage = styled.div`
+export const StyledLogin = styled.div`
   display: flex;
   flex-direction: column;
 `;
