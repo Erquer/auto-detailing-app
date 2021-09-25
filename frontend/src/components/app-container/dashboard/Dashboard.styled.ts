@@ -5,8 +5,6 @@ export const StyledDashboardWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  height: 100%;
-  padding: 30px;
   gap: 30px;
 `;
 
