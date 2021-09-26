@@ -3,7 +3,6 @@ import styled from 'styled-components';
 export const StyledLayoutWrapper = styled.div`
   background-color: #f1f1f1;
   display: grid;
-  place-items: center;
   width: 100%;
   height: 100%;
 `;
