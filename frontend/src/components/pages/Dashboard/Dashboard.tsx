@@ -1,6 +1,9 @@
 import React from 'react';
 import Calendar from './Calendar/Calendar';
-import { StyledDashboardElement, StyledDashboardWrapper } from './Dashboard.styled';
+import {
+  StyledDashboardElement,
+  StyledDashboardWrapper,
+} from './Dashboard.styled';
 import Income from './Income/Income';
 import Orders from './Orders/Orders';
 import Workers from './Workers/Workers';

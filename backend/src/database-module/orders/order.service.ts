@@ -81,14 +81,12 @@ export class OrderService {
         finishDate: Between(subWeeks(date, 1), addDays(date, 3)),
       },
     });
-    console.log(serviceCosts);
     const profitsFromServices = serviceCosts.map((order: Order) => {
       return order.service.reduce(
         (a, b) => a + b.servicePrize - b.serviceCost,
         0,
       );
     });
-    console.log(profitsFromServices);
     const worker = serviceCosts.map((order) => order.worker)[0];
     const reduceByWorkerSalary = serviceCosts
       .map((order) => order.service)
@@ -98,10 +96,16 @@ export class OrderService {
           0,
         ),
       );
-    console.log(reduceByWorkerSalary);
     for (let i = 0; i < profitsFromServices.length; i++) {
       profitsFromServices[i] = profitsFromServices[i] + reduceByWorkerSalary[i];
     }
-    return profitsFromServices;
+    const toReturn: { date: Date; profit: number }[] = [];
+    for (let i = 0; i < profitsFromServices.length; i++) {
+      toReturn.push({
+        date: serviceCosts.map((order) => order.finishDate)[i],
+        profit: profitsFromServices[i],
+      });
+    }
+    return toReturn;
   }
 }

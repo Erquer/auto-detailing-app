@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { BrowserRouter } from 'react-router-dom';
-import { MenuContainer } from './Menu/MenuContainer';
+import { MenuContainer } from './menu/MenuContainer';
 import { MainContainer } from './app-container/MainContainer';
 import '../styles.css';
 

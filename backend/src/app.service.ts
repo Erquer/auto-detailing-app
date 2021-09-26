@@ -70,7 +70,7 @@ export class AppService {
           const worker = new Workers();
           worker.firstName = `Pracownik ${i}`;
           worker.lastName = `Kowalski ${i}`;
-          worker.workHours = (Math.round(Math.random() * 10) % 7) + 1;
+          worker.workHours = (Math.round(Math.random() * 10) % 3) + 1;
           worker.salary = Math.round(Math.random() * 100);
           await this.workerRepository.save(worker);
         }
