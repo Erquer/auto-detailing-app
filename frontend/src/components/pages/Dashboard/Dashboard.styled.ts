@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { toRem } from '../../../utils/utils';
+import { StyledCard } from '../../common/Card/Card.styled';
 
 export const StyledDashboardWrapper = styled.div`
   display: grid;
@@ -9,13 +9,8 @@ export const StyledDashboardWrapper = styled.div`
 `;
 
 export const StyledDashboardElement = styled.div<{ basis?: string }>`
-  position: relative;
+  ${StyledCard}
   flex-basis: ${(props) => props.basis || 'calc(100%/2)'};
-  min-height: ${toRem(150)};
-  padding: 1rem;
-  background-color: #fff;
-  border-radius: 20px;
-  box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.1);
 
   &:nth-child(1) {
     grid-column: 1/3;

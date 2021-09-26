@@ -9,7 +9,7 @@ import {
   DateNavigator,
   TodayButton,
 } from '@devexpress/dx-react-scheduler-material-ui';
-import Button from '../../../Button/Button';
+import Button from '../../../common/Button/Button';
 import { StyledCalendar, StyledHeading } from './Calendar.styled';
 
 const schedulerData = [
