@@ -95,7 +95,6 @@ export class AppService {
               (Math.round(Math.random() * 10) % 3) + 4,
             ),
           );
-          order.status = false;
           await this.orderRepository.save(order);
         }
       }

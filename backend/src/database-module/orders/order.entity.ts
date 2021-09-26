@@ -9,6 +9,7 @@ import {
   JoinTable,
   OneToMany,
   ManyToOne,
+  Check,
 } from 'typeorm';
 import { Client } from '../clients/client.entity';
 import { Car } from '../cars/car.entity';
@@ -16,6 +17,7 @@ import { Service } from '../services/service.entity';
 import { Workers } from '../workers/worker.entity';
 
 @Entity('orders')
+@Check('"orderDate" < "finishDate"')
 export class Order {
   @PrimaryGeneratedColumn()
   id: number;
@@ -26,10 +28,10 @@ export class Order {
   @Column()
   deadline: Date;
 
-  @Column()
-  status: boolean;
+  @Column({ nullable: true })
+  finishDate: Date;
 
-  @OneToOne(() => Workers)
+  @ManyToOne(() => Workers, (workers) => workers.order)
   @JoinColumn()
   worker: Workers;
 

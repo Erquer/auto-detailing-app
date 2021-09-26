@@ -1,4 +1,12 @@
-import { Entity, Column, PrimaryGeneratedColumn, Unique, Check } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  Unique,
+  Check,
+  OneToMany,
+} from 'typeorm';
+import { Order } from '../orders/order.entity';
 
 @Entity()
 @Unique(['firstName', 'lastName'])
@@ -19,4 +27,7 @@ export class Workers {
 
   @Column()
   workHours: number;
+
+  @OneToMany(() => Order, (order) => order.worker)
+  order: Order[];
 }
