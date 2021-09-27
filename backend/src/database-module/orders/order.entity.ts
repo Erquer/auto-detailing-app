@@ -25,10 +25,10 @@ export class Order {
   @CreateDateColumn()
   orderDate: Date;
 
-  @Column()
+  @Column({ type: 'date' })
   deadline: Date;
 
-  @Column({ nullable: true })
+  @Column({ type: 'date', nullable: true })
   finishDate: Date;
 
   @ManyToOne(() => Workers, (workers) => workers.order)

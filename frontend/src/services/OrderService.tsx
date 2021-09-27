@@ -7,22 +7,22 @@ export interface Workers {
 }
 
 export interface Car {
-    id: number;
+  id: number;
 }
 
 export interface Service {
-    id:number;
+  id: number;
 }
 
 export interface Order {
-    id: number;
-    orderDate: Date;
-    deadline: Date;
-    finishDate: Date;
-    worker: Workers | any;
-    client: Client;
-    car: Car | any;
-    service: Service[] | any;
+  id: number;
+  orderDate: Date;
+  deadline: Date;
+  finishDate: Date;
+  worker: Workers | any;
+  client: Client;
+  car: Car | any;
+  service: Service[] | any;
 }
 
 export class OrderService {
@@ -34,7 +34,15 @@ export class OrderService {
     return axios.get<Order[]>('/orders/byWeek');
   }
 
-  static async getProfitsFromLastWeek(): Promise<AxiosResponse<{date:Date, profit: number}[]>> {
+  static async getProfitsFromLastWeek(): Promise<
+    AxiosResponse<{ date: Date; profit: number }[]>
+  > {
     return axios.get('/orders/profitsByWeek');
+  }
+
+  static async getOrdersByFinishDate(
+    date: string,
+  ): Promise<AxiosResponse<Order[]>> {
+    return axios.get(`/orders/getByFinishDate/${date}`);
   }
 }

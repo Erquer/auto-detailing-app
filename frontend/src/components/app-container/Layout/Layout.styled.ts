@@ -10,10 +10,6 @@ export const StyledLayoutWrapper = styled.div`
 export const StyledLayout = styled.div`
   flex-basis: calc(11 / 12 * 100%);
   display: grid;
-  place-items: center;
-  height: 100%;
   height: 100%;
   padding: 30px;
-  max-width: 1800px;
-  min-width: 1500px;
 `;

@@ -10,7 +10,7 @@ const StyledAppContainer = styled.div`
   box-sizing: border-box;
   flex: 1;
   flex-flow: row;
-  height: 100%;
+  height: 100vh;
 `;
 
 function App() {

@@ -1,55 +1,121 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  InternalServerErrorException,
+  Logger,
+  Param,
+  Post,
+} from '@nestjs/common';
 import { OrderService } from './order.service';
 import { Order } from './order.entity';
 import { UpdateResult } from 'typeorm';
 
 @Controller('/api/orders')
 export class OrderController {
+  private logger = new Logger(OrderController.name);
   constructor(private readonly orderService: OrderService) {}
 
   @Get()
   getOrders() {
-    return this.orderService.findAll();
+    try {
+      return this.orderService.findAll();
+    } catch (e) {
+      this.logger.error(e);
+      throw new InternalServerErrorException();
+    }
   }
 
   @Get('/getOrder/:orderId')
   getOrder(@Param('orderId') orderId: number) {
-    return this.orderService.findOne(orderId);
+    try {
+      return this.orderService.findOne(orderId);
+    } catch (e) {
+      this.logger.error(e);
+      throw new InternalServerErrorException();
+    }
   }
 
   @Post('/addOrder')
   addOrder(@Body() order: Order) {
-    return this.orderService.addOrder(order);
+    try {
+      return this.orderService.addOrder(order);
+    } catch (e) {
+      this.logger.error(e);
+      throw new InternalServerErrorException();
+    }
   }
 
   @Get('/clientOrders/:clientId')
   async getClientOrders(@Param('clientId') clientId): Promise<Order[]> {
-    return this.orderService.getClientOrders(clientId);
+    try {
+      return this.orderService.getClientOrders(clientId);
+    } catch (e) {
+      this.logger.error(e);
+      throw new InternalServerErrorException();
+    }
   }
 
   @Post('/updateOrder/:orderId')
   async updateOrder(@Param('orderId') orderId: number, @Body() order: Order) {
-    return this.orderService.updateOrder(orderId, order);
+    try {
+      return this.orderService.updateOrder(orderId, order);
+    } catch (e) {
+      this.logger.error(e);
+      throw new InternalServerErrorException();
+    }
   }
 
   @Post('/finishOrder/:orderId')
   async finishOrder(@Param('orderId') orderId: number): Promise<UpdateResult> {
-    return this.orderService.finishOrder(orderId);
+    try {
+      return this.orderService.finishOrder(orderId);
+    } catch (e) {
+      this.logger.error(e);
+      throw new InternalServerErrorException();
+    }
   }
+
   @Post('/unfinishOrder/:orderId')
   async unfinishOrder(
     @Param('orderId') orderId: number,
   ): Promise<UpdateResult> {
-    return this.orderService.unfinishOrder(orderId);
+    try {
+      return this.orderService.unfinishOrder(orderId);
+    } catch (e) {
+      this.logger.error(e);
+      throw new InternalServerErrorException();
+    }
   }
 
   @Get('/byWeek')
   async getOrdersFromLastWeek(): Promise<Order[]> {
-    return this.orderService.getOrdersFromLastWeek();
+    try {
+      return this.orderService.getOrdersFromLastWeek();
+    } catch (e) {
+      this.logger.error(e);
+      throw new InternalServerErrorException();
+    }
   }
 
   @Get('/profitsByWeek')
   async getProfitsByWeek() {
-    return this.orderService.getProfitsFromLastWeekByDay();
+    try {
+      return this.orderService.getProfitsFromLastWeekByDay();
+    } catch (e) {
+      this.logger.error(e);
+      throw new InternalServerErrorException();
+    }
+  }
+
+  @Get('/getByFinishDate/:date')
+  async getByFinishDate(@Param('date') date: string) {
+    try {
+      this.logger.log(`getByFinishDate called with ${date}`);
+      return this.orderService.getOrdersByFinishDate(date);
+    } catch (e) {
+      this.logger.error(e);
+      throw new InternalServerErrorException();
+    }
   }
 }

@@ -11,7 +11,7 @@ import Button from '../../../common/Button/Button';
 import { StyledOrders } from './Orders.styled';
 import { StyledHeading } from '../Calendar/Calendar.styled';
 
-const useStyles = makeStyles({
+export const useStyles = makeStyles({
   table: {
     minWidth: 650,
     maxHeight: '50px',

@@ -4,10 +4,13 @@ import { ApexOptions } from 'apexcharts';
 import { OrderService } from '../../../../services/OrderService';
 
 export interface IncomeChartProps {
-  height: number;
+  height: number | string;
+  // eslint-disable-next-line no-unused-vars
+  getOrdersByDate?: (date: string) => void;
 }
 
 export const IncomeChart = (props: IncomeChartProps) => {
+  const { height, getOrdersByDate } = props;
   const [incomes, setIncomes] = useState<any>();
   const [loading, setLoading] = useState(true);
 
@@ -19,24 +22,35 @@ export const IncomeChart = (props: IncomeChartProps) => {
     })();
   }, []);
 
-  const options: ApexOptions = {
+  const chartOptions: ApexOptions = {
     chart: {
       type: 'bar',
-      // eslint-disable-next-line react/destructuring-assignment
-      height: props.height,
+      height,
+      events: {
+        dataPointSelection(e: any, chart?: any, options?: any) {
+          // eslint-disable-next-line max-len,no-unused-expressions
+          getOrdersByDate &&
+            getOrdersByDate(
+              options.w.config.xaxis.categories[options.dataPointIndex],
+            );
+        },
+      },
     },
     plotOptions: {
       bar: {
         colors: {
-          ranges: [{
-            from: -100,
-            to: -46,
-            color: '#F15B46',
-          }, {
-            from: -45,
-            to: 0,
-            color: '#FEB019',
-          }],
+          ranges: [
+            {
+              from: -100,
+              to: -46,
+              color: '#F15B46',
+            },
+            {
+              from: -45,
+              to: 0,
+              color: '#FEB019',
+            },
+          ],
         },
         columnWidth: '80%',
       },
@@ -61,16 +75,30 @@ export const IncomeChart = (props: IncomeChartProps) => {
         rotate: -90,
       },
     },
+    markers: {
+      // eslint-disable-next-line no-console
+      onClick: () => {
+        console.log('Działam');
+      },
+    },
+    tooltip: {
+      shared: false,
+      intersect: true,
+    },
   };
   return (
     <div>
-      {loading ? 'Loading...' : (
+      {loading ? (
+        'Loading...'
+      ) : (
         <ReactApexChart
-          options={options}
-          series={[{
-            name: 'profits',
-            data: incomes.map((income: any) => income.profit),
-          }]}
+          options={chartOptions}
+          series={[
+            {
+              name: 'profits',
+              data: incomes.map((income: any) => income.profit),
+            },
+          ]}
           type="bar"
           height={350}
         />
