@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Order, OrderService } from '../../../services/OrderService';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableHead from '@material-ui/core/TableHead';
@@ -7,7 +6,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
 import TableContainer from '@material-ui/core/TableContainer';
-import { useStyles } from '../../pages/Dashboard/Orders/Orders';
+import { Order, OrderService } from '../../../services/OrderService';
 
 const ordersData = [
   {
@@ -31,19 +30,23 @@ const ordersData = [
 ];
 
 export const OrderHistory: React.FC<{}> = () => {
+  const [loading, setLoading] = useState(true);
   const [orders, setOrders] = useState<Order[]>([]);
-  const classes = useStyles();
 
   useEffect(() => {
     (async () => {
       const { data } = await OrderService.getOrders();
       setOrders(data);
+      setLoading(false);
     })();
   }, []);
 
+  // eslint-disable-next-line no-console
+  console.log(orders);
+
   const table = (
     <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="simple table">
+      <Table aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell>Samochód</TableCell>
@@ -66,5 +69,10 @@ export const OrderHistory: React.FC<{}> = () => {
     </TableContainer>
   );
 
-  return <div>Tutaj będzie cała historia</div>;
+  return (
+    <div>
+      <h1>Historia zamówień</h1>
+      {loading ? 'Loading....' : table}
+    </div>
+  );
 };

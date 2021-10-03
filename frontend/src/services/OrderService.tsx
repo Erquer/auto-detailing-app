@@ -4,10 +4,14 @@ import { Client } from '../components/pages/Clients/ClientsTable';
 
 export interface Workers {
   id: number;
+
 }
 
 export interface Car {
   id: number;
+  color: string;
+  model: string;
+
 }
 
 export interface Service {
@@ -15,7 +19,7 @@ export interface Service {
 }
 
 export interface Order {
-  id: number;
+  // id: number;
   orderDate: Date;
   deadline: Date;
   finishDate: Date;
@@ -36,7 +40,7 @@ export class OrderService {
 
   static async getProfitsFromLastWeek(): Promise<
     AxiosResponse<{ date: Date; profit: number }[]>
-  > {
+    > {
     return axios.get('/orders/profitsByWeek');
   }
 
