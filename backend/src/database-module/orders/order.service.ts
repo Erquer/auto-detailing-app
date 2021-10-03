@@ -17,7 +17,9 @@ export class OrderService {
   ) {}
 
   findAll(): Promise<Order[]> {
-    return this.orderRepository.find();
+    return this.orderRepository.find({
+      relations: ['car', 'client', 'worker', 'service'],
+    });
   }
 
   findOne(id: number): Promise<Order> {

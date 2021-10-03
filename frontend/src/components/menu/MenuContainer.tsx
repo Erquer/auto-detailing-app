@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch } from 'react-router-dom';
-import { ImHome3, ImBug, ImCog, ImAccessibility } from 'react-icons/im';
+import { ImHome3, ImBug, ImCog, ImAccessibility, ImAddressBook } from 'react-icons/im';
 import { ListItem } from '@material-ui/core';
 import { MenuItemLink } from './MenuItemLink';
 import { StyledMenuContainer } from './MenuComponents.styled';
@@ -28,6 +28,13 @@ export const MenuContainer = () => (
         to="/services"
         icon={<ImCog color="#fff" />}
         primary="Services"
+      />
+      <ListItem
+        button
+        component={MenuItemLink}
+        to="/history"
+        icon={<ImAddressBook color="#fff" />}
+        primary="History"
       />
       <ListItem
         button
