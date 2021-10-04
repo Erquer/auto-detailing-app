@@ -44,7 +44,9 @@ module.exports = {
       { overrides: { '?': 'before', ':': 'before' } },
     ],
     'comma-spacing': ['error', { before: false, after: true }],
+    'linebreak-style': 0,
   },
+  indent: 'off',
   settings: {
     'import/resolver': {
       node: {
