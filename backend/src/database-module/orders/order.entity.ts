@@ -39,7 +39,7 @@ export class Order {
   @JoinColumn()
   client: Client;
 
-  @OneToOne(() => Car)
+  @ManyToOne(() => Car, (car) => car.order)
   @JoinColumn()
   car: Car;
 

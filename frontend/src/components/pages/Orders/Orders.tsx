@@ -20,47 +20,47 @@ import {
 } from '@devexpress/dx-react-scheduler-material-ui';
 
 const appointments = [
-    {
-      title: 'Website Re-Design Plan',
-      startDate: new Date(2018, 6, 23, 9, 30),
-      endDate: new Date(2018, 6, 23, 11, 30),
-      workerId: 1,
-    }, {
-      title: 'Book Flights to San Fran for Sales Trip',
-      startDate: new Date(2018, 6, 23, 12, 0),
-      endDate: new Date(2018, 6, 23, 13, 0),
-      workerId: 2,
-    }, {
-      title: 'Install New Router in Dev Room',
-      startDate: new Date(2018, 6, 23, 14, 30),
-      endDate: new Date(2018, 6, 23, 15, 30),
-      workerId: 3,
-    }, {
-      title: 'Approve Personal Computer Upgrade Plan',
-      startDate: new Date(2018, 6, 24, 10, 0),
-      endDate: new Date(2018, 6, 24, 11, 0),
-      workerId: 1,
-    }, {
-      title: 'Final Budget Review',
-      startDate: new Date(2018, 6, 24, 12, 0),
-      endDate: new Date(2018, 6, 24, 13, 35),
-      workerId: 2,
-    }, {
-      title: 'New Brochures',
-      startDate: new Date(2018, 6, 24, 14, 30),
-      endDate: new Date(2018, 6, 24, 15, 45),
-      workerId: 3,
-    },
-  ];
+  {
+    title: 'Website Re-Design Plan',
+    startDate: new Date(2018, 6, 23, 9, 30),
+    endDate: new Date(2018, 6, 23, 11, 30),
+    workerId: 1,
+  }, {
+    title: 'Book Flights to San Fran for Sales Trip',
+    startDate: new Date(2018, 6, 23, 12, 0),
+    endDate: new Date(2018, 6, 23, 13, 0),
+    workerId: 2,
+  }, {
+    title: 'Install New Router in Dev Room',
+    startDate: new Date(2018, 6, 23, 14, 30),
+    endDate: new Date(2018, 6, 23, 15, 30),
+    workerId: 3,
+  }, {
+    title: 'Approve Personal Computer Upgrade Plan',
+    startDate: new Date(2018, 6, 24, 10, 0),
+    endDate: new Date(2018, 6, 24, 11, 0),
+    workerId: 1,
+  }, {
+    title: 'Final Budget Review',
+    startDate: new Date(2018, 6, 24, 12, 0),
+    endDate: new Date(2018, 6, 24, 13, 35),
+    workerId: 2,
+  }, {
+    title: 'New Brochures',
+    startDate: new Date(2018, 6, 24, 14, 30),
+    endDate: new Date(2018, 6, 24, 15, 45),
+    workerId: 3,
+  },
+];
 
-  const workerData = [
-    { text: 'Arek',
-      id: 0 },
-    { text: 'Balazej',
-      id: 1 },
-    { text: 'Tobiasz',
-      id: 2 },
-  ];
+const workerData = [
+  { text: 'Arek',
+    id: 0 },
+  { text: 'Balazej',
+    id: 1 },
+  { text: 'Tobiasz',
+    id: 2 },
+];
 
 const isWeekOrMonthView = (viewName: string) => viewName === 'Week' || viewName === 'Month';
 

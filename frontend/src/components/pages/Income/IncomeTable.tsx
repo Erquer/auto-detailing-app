@@ -26,7 +26,7 @@ export const IncomeTable = ({ ordersFromDay }: IncomeTableProps) => {
             <TableCell>Client</TableCell>
             <TableCell>Car</TableCell>
             <TableCell>Services</TableCell>
-            <TableCell>Prize</TableCell>
+            <TableCell>Income</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
