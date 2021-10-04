@@ -84,7 +84,7 @@ export class OrderService {
       this.logger.log(`getProfitsFromLastWeekByDay called`);
       const date = new Date();
       const serviceCosts = await this.orderRepository.find({
-        relations: ['service', 'worker'],
+        relations: ['service', 'worker', 'car'],
         where: {
           finishDate: Between(subWeeks(date, 1), addDays(date, 3)),
         },
@@ -126,6 +126,7 @@ export class OrderService {
     try {
       const finishDateFromClient = new Date(date);
       return this.orderRepository.find({
+        relations: ['client', 'service'],
         where: {
           finishDate: finishDateFromClient,
         },

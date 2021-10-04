@@ -2,18 +2,13 @@ import React, { useEffect, useState } from 'react';
 import { IncomeChart } from '../Dashboard/Income/IncomeChart';
 import { IncomeStyled } from './Income.styled';
 import { Order, OrderService } from '../../../services/OrderService';
+import { IncomeTable } from './IncomeTable';
 
-const Orders = () => {
+const Income = () => {
   const [orders, setOrders] = useState<Order[]>();
 
   const getOrderByDate = (date: string) => {
     const dateToSent = new Date(date);
-    // eslint-disable-next-line no-console
-    console.log(
-      date,
-      dateToSent.toLocaleDateString(),
-      dateToSent.toLocaleTimeString(),
-    );
     (async () => {
       const { data } = await OrderService.getOrdersByFinishDate(
         dateToSent.toDateString(),
@@ -29,9 +24,10 @@ const Orders = () => {
       <div>
         <h1>Orders</h1>
         <IncomeChart height={600} getOrdersByDate={getOrderByDate} />
+        {orders && <IncomeTable ordersFromDay={orders} />}
       </div>
     </IncomeStyled>
   );
 };
 
-export default Orders;
+export default Income;

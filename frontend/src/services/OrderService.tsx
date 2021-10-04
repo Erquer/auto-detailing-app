@@ -11,11 +11,14 @@ export interface Car {
   id: number;
   color: string;
   model: string;
-
+  registration: string;
 }
 
 export interface Service {
   id: number;
+  serviceName: string;
+  servicePrize: number;
+  serviceCost: number;
 }
 
 export interface Order {

@@ -1,7 +1,6 @@
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 import { CarService } from './car.service';
 import { Car } from './car.entity';
-import { Column } from 'typeorm';
 
 @Controller('/api/cars')
 export class CarController {

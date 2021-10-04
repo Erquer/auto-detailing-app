@@ -75,12 +75,6 @@ export const IncomeChart = (props: IncomeChartProps) => {
         rotate: -90,
       },
     },
-    markers: {
-      // eslint-disable-next-line no-console
-      onClick: () => {
-        console.log('Działam');
-      },
-    },
     tooltip: {
       shared: false,
       intersect: true,

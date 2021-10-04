@@ -46,6 +46,13 @@ export const MenuContainer = () => (
       <ListItem
         button
         component={MenuItemLink}
+        to="/income"
+        icon={<ImBug color="#fff" />}
+        primary="Income"
+      />
+      <ListItem
+        button
+        component={MenuItemLink}
         to="/login"
         icon={<ImAccessibility color="#fff" />}
         primary="Login"

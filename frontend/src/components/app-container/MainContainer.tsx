@@ -10,6 +10,7 @@ const Login = lazy(() => import('../pages/Login/Login'));
 const Orders = lazy(() => import('../pages/Orders/Orders'));
 const Services = lazy(() => import('../pages/Services/Services'));
 const OrderHistory = lazy(() => import('../pages/OrderHistory/OrderHistoryPage'));
+const Income = lazy(() => import('../pages/Income/Income'));
 
 export const MainContainer = () => (
   <React.Suspense fallback="Loading....">
@@ -20,6 +21,7 @@ export const MainContainer = () => (
         <Route path="/services" component={Services} />
         <Route path="/history" component={OrderHistory} />
         <Route path="/orders" component={Orders} />
+        <Route path="/income" component={Income} />
         <Route path="/login" component={Login} />
       </Provider>
     </Layout>
