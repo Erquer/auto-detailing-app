@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+// disable-eslint
+import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import Table from '@material-ui/core/Table';
 import TableHead from '@material-ui/core/TableHead';
@@ -11,13 +12,23 @@ import { Order, Service } from '../../../services/OrderService';
 export interface IncomeTableProps {
     ordersFromDay: Order[];
 }
-
+export const countIncome = (order: Order): number => {
+  const result = order.service.map((service) => ({ serviceCost: service.serviceCost,
+    servicePrize: service.servicePrize,
+    serviceDuration: service.serviceDurationTime,
+  }))
+  // eslint-disable-next-line max-len
+    .reduce((acc: {serviceDuration: number, serviceCost: number, servicePrize: number},
+      item: {serviceDuration:number, serviceCost: number, servicePrize: number}) => {
+      acc.serviceDuration += item.serviceDuration;
+      acc.serviceCost += item.serviceCost;
+      acc.servicePrize += item.servicePrize;
+      return acc;
+    });
+    // eslint-disable-next-line max-len
+  return result.servicePrize - result.serviceCost - result.serviceDuration * (order.worker.salary / 8);
+};
 export const IncomeTable = ({ ordersFromDay }: IncomeTableProps) => {
-  useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log('IncomeTable:', ordersFromDay);
-  }, [ordersFromDay]);
-
   const table = (
     <TableContainer component={Paper}>
       <Table aria-label="simple table">
@@ -36,8 +47,7 @@ export const IncomeTable = ({ ordersFromDay }: IncomeTableProps) => {
               <TableCell>{order.car.registration }</TableCell>
               <TableCell>{order.service.map((service: Service) => service.serviceName).join(',')}</TableCell>
               <TableCell>
-                {order.service.reduce((b:number, service: Service) => (
-                  b + (service.servicePrize - service.serviceCost)))}
+                {countIncome(order)}
               </TableCell>
             </TableRow>
           )) : <TableRow> No Data </TableRow>}

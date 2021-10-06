@@ -7,27 +7,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableBody from '@material-ui/core/TableBody';
 import TableContainer from '@material-ui/core/TableContainer';
 import { Order, OrderService } from '../../../services/OrderService';
-
-const ordersData = [
-  {
-    carModel: 'Peugeot 208',
-    registrationNumber: 'PO 2137',
-    nameOfService: 'Mycie one-step',
-    price: '59',
-  },
-  {
-    carModel: 'Porsche 911 Turbo S',
-    registrationNumber: 'WW 577A83',
-    nameOfService: 'Mycie wieloetapowe',
-    price: '129',
-  },
-  {
-    carModel: 'Audi A6',
-    registrationNumber: 'PZ B202HZ',
-    nameOfService: 'Sprzątanie wnętrza pojazdu',
-    price: '49',
-  },
-];
+import { countIncome } from '../../pages/Income/IncomeTable';
+import { StyledTableCell } from '../../pages/Income/Income.styled';
 
 export const OrderHistory: React.FC<{}> = () => {
   const [loading, setLoading] = useState(true);
@@ -45,23 +26,29 @@ export const OrderHistory: React.FC<{}> = () => {
   console.log(orders);
 
   const table = (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} style={{ maxHeight: '600px' }}>
       <Table aria-label="simple table">
         <TableHead>
-          <TableRow>
-            <TableCell>Samochód</TableCell>
-            <TableCell>Numer rejestracyjny</TableCell>
-            <TableCell>Usługa</TableCell>
-            <TableCell>Cena</TableCell>
+          <TableRow style={{ backgroundColor: '#2851A3' }}>
+            <StyledTableCell>Client name</StyledTableCell>
+            <StyledTableCell>Car registration</StyledTableCell>
+            <StyledTableCell>Services</StyledTableCell>
+            <StyledTableCell>Order Date </StyledTableCell>
+            <StyledTableCell>Deadline </StyledTableCell>
+            <StyledTableCell>Finish Date </StyledTableCell>
+            <StyledTableCell>Summary Income</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {ordersData.map((order) => (
+          {orders.map((order) => (
             <TableRow>
-              <TableCell>{order.carModel}</TableCell>
-              <TableCell>{order.registrationNumber}</TableCell>
-              <TableCell>{order.nameOfService}</TableCell>
-              <TableCell>{order.price}</TableCell>
+              <TableCell size="small" height="100%">{order.client.firstName || 'Anonymous'}</TableCell>
+              <TableCell>{order.car.registration || 'Anonymous'}</TableCell>
+              <TableCell>{order.service.map((ser) => ser.serviceName).join(',') || 'undefined'}</TableCell>
+              <TableCell>{order.orderDate || 'undefined'}</TableCell>
+              <TableCell>{order.deadline || 'undefined'}</TableCell>
+              <TableCell>{order.finishDate || 'unfinished'}</TableCell>
+              <TableCell>{order.service.length > 0 ? countIncome(order) : 0}</TableCell>
             </TableRow>
           ))}
         </TableBody>

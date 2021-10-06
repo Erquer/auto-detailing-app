@@ -4,7 +4,10 @@ import { Client } from '../components/pages/Clients/ClientsTable';
 
 export interface Workers {
   id: number;
-
+  firstName: string;
+  lastName: string;
+  salary: number;
+  workHours: number;
 }
 
 export interface Car {
@@ -19,17 +22,18 @@ export interface Service {
   serviceName: string;
   servicePrize: number;
   serviceCost: number;
+  serviceDurationTime: number;
 }
 
 export interface Order {
-  // id: number;
+  id: number;
   orderDate: Date;
   deadline: Date;
   finishDate: Date;
-  worker: Workers | any;
+  worker: Workers;
   client: Client;
-  car: Car | any;
-  service: Service[] | any;
+  car: Car;
+  service: Service[];
 }
 
 export class OrderService {

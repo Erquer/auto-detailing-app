@@ -126,7 +126,7 @@ export class OrderService {
     try {
       const finishDateFromClient = new Date(date);
       return this.orderRepository.find({
-        relations: ['client', 'service'],
+        relations: ['client', 'service', 'car', 'worker'],
         where: {
           finishDate: finishDateFromClient,
         },
