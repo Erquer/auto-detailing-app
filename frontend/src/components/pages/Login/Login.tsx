@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser, UserState } from '../../../store/slices/userSlice/user';
 import {
   StyledLogin,
   StyledLoginCard,
@@ -10,17 +12,13 @@ import {
 } from './Login.styled';
 
 const Login = () => {
-  const [submitting, setSubmitting] = useState(false);
+  const dispatch = useDispatch();
+  const isSubmitting = useSelector((state: UserState) => state.isLogging);
 
   const onSubmit = (event: any) => {
     event.preventDefault();
 
-    setSubmitting(true);
-
-    setTimeout(() => {
-      setSubmitting(false);
-      console.log('Submited');
-    }, 3000);
+    dispatch(loginUser('John', 'Wick'));
   };
 
   return (
@@ -28,7 +26,7 @@ const Login = () => {
       <StyledLoginCard>
         <StyledLoginHeader>Auto Detailing App</StyledLoginHeader>
 
-        {submitting ? (
+        {isSubmitting ? (
           <StyledLoading>Loading...</StyledLoading>
         ) : (
           <StyledLoginForm>
@@ -47,7 +45,7 @@ const Login = () => {
             <StyledButton
               onClick={onSubmit}
               type="submit"
-              disabled={submitting}
+              disabled={isSubmitting}
             >
               Sign in
             </StyledButton>
