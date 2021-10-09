@@ -5,7 +5,6 @@ export const StyledLayoutWrapper = styled.div`
   display: grid;
   place-items: center;
   width: 100%;
-  height: 100%;
 `;
 
 export const StyledLayout = styled.div`

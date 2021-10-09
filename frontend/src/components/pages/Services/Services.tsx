@@ -1,10 +1,11 @@
 import React from 'react';
+import { StyledServices } from './Services.styled';
 
 const Services = () => (
-  <div>
+  <StyledServices>
     <h1>Services</h1>
     <p>Here you can find services</p>
-  </div>
+  </StyledServices>
 );
 
 export default Services;

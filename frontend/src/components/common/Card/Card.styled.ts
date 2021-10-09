@@ -3,7 +3,7 @@ import { toRem } from '../../../utils/utils';
 
 export const StyledCard = css`
   position: relative;
-  /* min-height: ${toRem(150)}; */
+  min-height: ${toRem(150)};
   padding: 1rem;
   background-color: #fff;
   border-radius: 20px;
