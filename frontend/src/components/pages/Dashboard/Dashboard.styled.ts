@@ -3,10 +3,9 @@ import { StyledCard } from '../../common/Card/Card.styled';
 
 export const StyledDashboardWrapper = styled.div`
   display: grid;
-  width: 90vw;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, 1fr);
-  gap: 50px;
+  gap: 25px;
 `;
 
 export const StyledDashboardElement = styled.div<{ basis?: string }>`
