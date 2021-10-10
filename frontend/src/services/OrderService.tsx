@@ -56,4 +56,16 @@ export class OrderService {
   ): Promise<AxiosResponse<Order[]>> {
     return axios.get(`/orders/getByFinishDate/${date}`);
   }
+
+  static async getWorkers(): Promise<AxiosResponse<Workers[]>> {
+    return axios.get<Workers[]>('/workers');
+  }
+
+  static async getServices(): Promise<AxiosResponse<Service[]>> {
+    return axios.get<Service[]>('/services');
+  }
+
+  static async addOrders(order: Order): Promise<AxiosResponse<Order[]>> {
+    return axios.post<Order[]>('/orders/addOrder', order);
+  }
 }

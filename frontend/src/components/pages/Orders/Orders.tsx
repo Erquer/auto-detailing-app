@@ -1,7 +1,9 @@
-import * as React from 'react';
+/* eslint-disable max-len */
+/* eslint-disable no-unused-vars */
+// eslint-disable
+import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import {
-  // eslint-disable-next-line max-len
   ViewState, EditingState, GroupingState, IntegratedGrouping, IntegratedEditing,
 } from '@devexpress/dx-react-scheduler';
 import {
@@ -18,6 +20,10 @@ import {
   DateNavigator,
   TodayButton,
 } from '@devexpress/dx-react-scheduler-material-ui';
+import { Order, OrderService } from '../../../services/OrderService';
+import { ClientService } from '../../../services/ClientService';
+
+const BooleanEditor = (props: any) => <AppointmentForm.BooleanEditor {...props} readOnly />;
 
 const appointments = [
   {
@@ -53,7 +59,7 @@ const appointments = [
   },
 ];
 
-const workerData = [
+const workerData1 = [
   { text: 'Arek',
     id: 0 },
   { text: 'Balazej',
@@ -70,17 +76,7 @@ export default class Orders extends React.PureComponent {
   constructor(props:any) {
     super(props);
     this.state = {
-      data: appointments.filter((appointment) => appointment.workerId < 3),
-      resources: [{
-        fieldName: 'workerId',
-        title: 'Pracownik',
-        instances: workerData,
-      }],
-      grouping: [{
-        resourceName: 'workerId',
-      }],
-      groupByDate: isWeekOrMonthView,
-      isGroupByDate: true,
+      isLoading: true,
     };
 
     this.commitChanges = this.commitChanges.bind(this);
@@ -93,7 +89,45 @@ export default class Orders extends React.PureComponent {
     };
   }
 
+  componentDidMount() {
+    (async () => {
+      // eslint-disable-next-line max-len
+      const [result, result2, result3, result4] = await Promise.all([OrderService.getWorkers(), OrderService.getServices(), OrderService.getOrders(), ClientService.getClients()]);
+      const allWorkersName = result.data.map((n) => ({ text: `${n.firstName} ${n.lastName}`, id: n.id }));
+      const allServices = result2.data.map((s) => ({ text: s.serviceName, id: s.id }));
+      const allAppointments = result3.data.map((a) => ({ startDate: a.orderDate, workerId: a?.worker, service: a.service.map((serviceId) => serviceId.id), client: a.client.id }));
+      const allClients = result4.data.map((c) => ({ text: `${c.firstName} ${c.lastName}`, id: c.id }));
+      this.setState(
+        { isLoading: false,
+          data: allAppointments,
+          resources: [{
+            fieldName: 'workerId',
+            title: 'Worker',
+            instances: allWorkersName,
+          },
+          {
+            fieldName: 'service',
+            title: 'Services',
+            instances: allServices,
+            allowMultiple: true,
+          },
+          {
+            fieldName: 'client',
+            title: 'Client',
+            instances: allClients,
+          },
+          ],
+        },
+      );
+    })();
+  }
+
   commitChanges({ added, changed, deleted }:any) {
+    if (added) {
+    //   const order: Orders = {  };
+    //   const response = OrderService.addOrders(order);
+    //   console.log(response);
+    }
     this.setState((state) => {
       let { data }:any = state;
       if (added) {
@@ -113,17 +147,17 @@ export default class Orders extends React.PureComponent {
 
   render() {
     const {
-      data, resources, grouping, groupByDate,
+      data, resources, grouping, groupByDate, isLoading,
     }:any = this.state;
 
-    return (
+    return isLoading ? 'Loading...' : (
       <>
         <Paper>
           <Scheduler
             data={data}
           >
             <ViewState
-              defaultCurrentDate="2018-05-30"
+              defaultCurrentDate="2021-10-04"
             />
             <EditingState
               onCommitChanges={this.commitChanges}
@@ -146,12 +180,13 @@ export default class Orders extends React.PureComponent {
             <Resources
               data={resources}
               mainResourceName="workerId"
+
             />
             <IntegratedGrouping />
             <IntegratedEditing />
 
             <AppointmentTooltip showOpenButton />
-            <AppointmentForm />
+            <AppointmentForm booleanEditorComponent={BooleanEditor} />
 
             <GroupingPanel />
             <DragDropProvider />
