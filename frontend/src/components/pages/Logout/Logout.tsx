@@ -9,6 +9,7 @@ const Logout = () => {
 
   useEffect(() => {
     dispatch(clearLoggingState());
+    localStorage.removeItem('username');
     history.push('/login');
   }, []);
 

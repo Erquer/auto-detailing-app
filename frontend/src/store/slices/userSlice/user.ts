@@ -23,6 +23,7 @@ export const userSlice = createSlice({
       state.username = action.payload;
       state.isLogged = true;
       state.isLogging = false;
+      localStorage.setItem('username', action.payload);
     },
     startLogging: (state) => {
       state.isLogged = false;
@@ -51,5 +52,12 @@ export const loginUser =
       console.error(error);
     }
   };
+
+export const loadUserFromLocalStorage = () => async (dispatch: AppDispatch) => {
+  const username = localStorage.getItem('username');
+  if (username && username !== '') {
+    dispatch(setLoggedSuccessful(username));
+  }
+};
 
 export default userSlice.reducer;

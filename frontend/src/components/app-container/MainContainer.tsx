@@ -1,5 +1,7 @@
-import React, { lazy } from 'react';
+import React, { lazy, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Route } from 'react-router';
+import { loadUserFromLocalStorage } from '../../store/slices/userSlice/user';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import Layout from './Layout/Layout';
@@ -15,18 +17,28 @@ const OrderHistory = lazy(
 );
 const Income = lazy(() => import('../pages/Income/Income'));
 
-export const MainContainer = () => (
-  <React.Suspense fallback="Loading....">
-    <Layout>
-      <Route path="/login" component={Login} />
-      <Route path="/logout" component={Logout} />
-      <ProtectedRoute path="/clients" component={Clients} />
-      <ProtectedRoute path="/services" component={Services} />
-      <ProtectedRoute path="/history" component={OrderHistory} />
-      <ProtectedRoute path="/orders" component={Orders} />
-      <ProtectedRoute path="/income" component={Income} />
-      <ProtectedRoute path="/income" component={Income} />
-      <ProtectedRoute path="/" exact component={Dashboard} />
-    </Layout>
-  </React.Suspense>
-);
+const MainContainer = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    console.log('read');
+    dispatch(loadUserFromLocalStorage());
+  }, []);
+
+  return (
+    <React.Suspense fallback="Loading....">
+      <Layout>
+        <Route path="/login" component={Login} />
+        <Route path="/logout" component={Logout} />
+        <ProtectedRoute path="/clients" component={Clients} />
+        <ProtectedRoute path="/services" component={Services} />
+        <ProtectedRoute path="/history" component={OrderHistory} />
+        <ProtectedRoute path="/orders" component={Orders} />
+        <ProtectedRoute path="/income" component={Income} />
+        <ProtectedRoute path="/income" component={Income} />
+        <ProtectedRoute path="/" exact component={Dashboard} />
+      </Layout>
+    </React.Suspense>
+  );
+};
+
+export default MainContainer;
