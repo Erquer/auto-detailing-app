@@ -6,16 +6,24 @@ export interface MenuItemLinkProps {
   icon?: JSX.Element;
   primary: string;
   to: string;
+  disabled: boolean;
 }
 
-export const MenuItemLink = ({ icon, primary, to }: MenuItemLinkProps) => {
+export const MenuItemLink = ({
+  icon,
+  primary,
+  to,
+  disabled,
+}: MenuItemLinkProps) => {
   const CustomLink = React.useMemo(
     () => React.forwardRef((linkProps) => <Link to={to} {...linkProps} />),
     [to],
   );
 
+  console.log(disabled);
+
   return (
-    <ListItem button component={CustomLink}>
+    <ListItem disabled={disabled} button component={CustomLink}>
       {icon && <ListItemIcon style={{ color: '#fff' }}>{icon}</ListItemIcon>}
       <ListItemText style={{ color: '#fff' }} primary={primary} />
     </ListItem>

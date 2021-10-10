@@ -1,5 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 import { RootState } from '../../../store/slices/rootReducer';
 import { loginUser } from '../../../store/slices/userSlice/user';
 import {
@@ -14,14 +15,15 @@ import {
 } from './Login.styled';
 
 const Login = () => {
-  const dispatch = useDispatch();
-  const isSubmitting = useSelector((state: RootState) => state.user.isLogging);
-  const form = useRef<HTMLFormElement>(null);
+  const [error, setError] = useState('');
   const [inputs, setInputs] = useState({
     login: '',
     password: '',
   });
-  const [error, setError] = useState('');
+
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const { isLogging, isLogged } = useSelector((state: RootState) => state.user);
 
   const handleSubmit = (event: any): void => {
     event.preventDefault();
@@ -43,15 +45,21 @@ const Login = () => {
     setInputs({ ...inputs, [name]: value });
   };
 
+  useEffect(() => {
+    if (isLogged) {
+      history.push('/');
+    }
+  }, [isLogged]);
+
   return (
     <StyledLogin>
       <StyledLoginCard>
         <StyledLoginHeader>Auto Detailing App</StyledLoginHeader>
 
-        {isSubmitting ? (
+        {isLogging ? (
           <StyledLoading>Submitting...</StyledLoading>
         ) : (
-          <StyledLoginForm ref={form}>
+          <StyledLoginForm>
             <StyledInput
               id="login"
               type="text"
@@ -72,7 +80,7 @@ const Login = () => {
             <StyledButton
               onClick={handleSubmit}
               type="submit"
-              disabled={isSubmitting}
+              disabled={isLogging}
             >
               Sign in
             </StyledButton>

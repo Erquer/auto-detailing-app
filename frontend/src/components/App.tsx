@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import { MenuContainer } from './Menu/MenuContainer';
 import { MainContainer } from './app-container/MainContainer';
 import '../styles.css';
+import reduxStore from '../store/store';
 
 const StyledAppContainer = styled.div`
   display: flex;
@@ -15,12 +17,14 @@ const StyledAppContainer = styled.div`
 
 function App() {
   return (
-    <BrowserRouter>
-      <StyledAppContainer>
-        <MenuContainer />
-        <MainContainer />
-      </StyledAppContainer>
-    </BrowserRouter>
+    <Provider store={reduxStore}>
+      <BrowserRouter>
+        <StyledAppContainer>
+          <MenuContainer />
+          <MainContainer />
+        </StyledAppContainer>
+      </BrowserRouter>
+    </Provider>
   );
 }
 
