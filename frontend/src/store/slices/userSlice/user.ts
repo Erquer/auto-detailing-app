@@ -18,22 +18,20 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setLoggedSuccessful: (state, action) => ({
-      ...state,
-      username: action.payload.username,
-      isLogged: true,
-      isLogging: false,
-    }),
-    setIsLogged: (state, action) => ({
-      ...state,
-      isLogged: action.payload.isLogged,
-      username: action.payload.username,
-    }),
-    startLogging: (state) => ({
-      ...state,
-      isLogged: false,
-      isLogging: true,
-    }),
+    setLoggedSuccessful: (state, action) => {
+      state.username = action.payload.username;
+      state.isLogged = true;
+      // state.isLogging = false;
+      console.log(state);
+    },
+    setIsLogged: (state, action) => {
+      state.isLogged = action.payload.isLogged;
+      state.username = action.payload.username;
+    },
+    startLogging: (state) => {
+      state.isLogged = false;
+      state.isLogging = true;
+    },
   },
 });
 
