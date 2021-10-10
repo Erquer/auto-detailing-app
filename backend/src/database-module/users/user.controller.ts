@@ -23,8 +23,14 @@ export class UserController {
   async login(
     @Body() user: { firstName: string; password: string },
   ): Promise<boolean> {
-    console.log(user.firstName, user.password);
+    if (!user) return false;
+
     const userToLogin = await this.userService.findByName(user.firstName);
+    if (!userToLogin) {
+      return false;
+    }
+
+    console.log(user.password === userToLogin.password);
     return user.password === userToLogin.password;
   }
 }

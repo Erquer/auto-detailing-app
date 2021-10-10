@@ -26,14 +26,15 @@ const Login = () => {
   const handleSubmit = (event: any): void => {
     event.preventDefault();
 
-    if (inputs.login.length === 0 || inputs.password.length === 0) {
+    const { login, password } = inputs;
+
+    if (login.length === 0 || password.length === 0) {
       setError('Please fill inputs');
       return;
     }
-
     setError('');
 
-    dispatch(loginUser('John', 'Wick'));
+    dispatch(loginUser(login, password));
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
