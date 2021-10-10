@@ -18,12 +18,12 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
+    clearLoggingState: () => initialState,
     setLoggedSuccessful: (state, action) => {
       state.username = action.payload;
       state.isLogged = true;
       state.isLogging = false;
     },
-    clearLoggingState: () => initialState,
     startLogging: (state) => {
       state.isLogged = false;
       state.isLogging = true;

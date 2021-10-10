@@ -20,8 +20,6 @@ export const MenuItemLink = ({
     [to],
   );
 
-  console.log(disabled);
-
   return (
     <ListItem disabled={disabled} button component={CustomLink}>
       {icon && <ListItemIcon style={{ color: '#fff' }}>{icon}</ListItemIcon>}
