@@ -1,15 +1,31 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { StyledCardHeader } from '../../../common/styledComponents';
-import { StyledAddWorkersFormCard } from './AddWorkerForm.styled';
+import {
+  StyledButton,
+  StyledCardHeader,
+  StyledInput,
+} from '../../../common/styledComponents';
+import { StyledLoading } from '../../Login/Login.styled';
+import { Worker } from '../Workers';
+import {
+  StyledAddWorkersFormCard,
+  StyledFormWrapper,
+  StyledWorkerForm,
+  StyledWorkersError,
+} from './AddWorkerForm.styled';
 /* eslint-disable */
 
-const AddWorkerForm = () => {
+interface FormProps {
+  onAddWorker: (worker: Worker) => void;
+}
+
+const AddWorkerForm = ({ onAddWorker }: FormProps) => {
   const [error, setError] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
   const [inputs, setInputs] = useState({
     firstName: '',
     lastName: '',
-    workingHours: '',
+    workHours: '',
     salary: '',
   });
 
@@ -18,15 +34,23 @@ const AddWorkerForm = () => {
   const handleSubmit = (event: any): void => {
     event.preventDefault();
 
-    // const { login, password } = inputs;
+    const { firstName, lastName, salary, workHours } = inputs;
 
-    // if (login.length === 0 || password.length === 0) {
-    //   setError('Please fill inputs');
-    //   return;
-    // }
-    setError('');
+    if (
+      firstName.length === 0 ||
+      lastName.length === 0 ||
+      salary.length === 0 ||
+      workHours.length === 0
+    ) {
+      setError('Please fill inputs');
+      return;
+    }
 
-    dispatch(null);
+    onAddWorker({
+      ...inputs,
+      salary: Number(salary),
+      workHours: Number(workHours),
+    });
   };
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
@@ -35,47 +59,63 @@ const AddWorkerForm = () => {
     setInputs({ ...inputs, [name]: value });
   };
 
-  return (
+  return isLoading ? (
+    <StyledLoading>Loading...</StyledLoading>
+  ) : (
     <StyledAddWorkersFormCard>
       <StyledCardHeader>Add Worker</StyledCardHeader>
+      <StyledWorkerForm>
+        <StyledFormWrapper>
+          <div
+            style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}
+          >
+            <StyledInput
+              id="firstName"
+              type="text"
+              placeholder="First name"
+              value={inputs.firstName}
+              onChange={handleChange}
+              required
+            />
+            <StyledInput
+              id="lastName"
+              type="text"
+              placeholder="Last name"
+              value={inputs.lastName}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div
+            style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}
+          >
+            <StyledInput
+              id="workHours"
+              type="number"
+              placeholder="Working hours"
+              value={inputs.workHours}
+              onChange={handleChange}
+              required
+            />
+            <StyledInput
+              id="salary"
+              type="number"
+              placeholder="Salary"
+              value={inputs.salary}
+              onChange={handleChange}
+              required
+            />
+          </div>
+        </StyledFormWrapper>
+        {error !== '' && <StyledWorkersError>{error}</StyledWorkersError>}
+
+        <StyledButton onClick={handleSubmit} type="submit" disabled={isLoading}>
+          Add worker
+        </StyledButton>
+      </StyledWorkerForm>
     </StyledAddWorkersFormCard>
   );
-  // <StyledLogin>
-  //   <StyledLoginCard>
-  //     <StyledLoginHeader>Auto Detailing App</StyledLoginHeader>
-
-  //     {isLogging ? (
-  //       <StyledLoading>Submitting...</StyledLoading>
-  //     ) : (
-  //       <StyledLoginForm>
-  //         <StyledInput
-  //           id="login"
-  //           type="text"
-  //           placeholder="Enter your login here"
-  //           value={inputs.login}
-  //           onChange={handleChange}
-  //           required
-  //         />
-  //         <StyledInput
-  //           id="password"
-  //           type="password"
-  //           placeholder="Enter your password here"
-  //           value={inputs.password}
-  //           onChange={handleChange}
-  //           required
-  //         />
-  //         {error !== '' && <StyledError>{error}</StyledError>}
-  //         <StyledButton
-  //           onClick={handleSubmit}
-  //           type="submit"
-  //           disabled={isLogging}
-  //         >
-  //           Sign in
-  //         </StyledButton>
-  //       </StyledLoginForm>
-  //     )}
-  //   </StyledLoginCard>
-  // </StyledLogin>
 };
 
 export default AddWorkerForm;

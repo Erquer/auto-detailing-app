@@ -15,7 +15,7 @@ import AddWorkerForm from './AddWorkerForm/AddWorkerForm';
 import axios from '../../../utils/axios';
 import { StyledButton } from '../../common/styledComponents';
 
-interface Worker {
+export interface Worker {
   id?: number;
   firstName: string;
   lastName: string;
@@ -37,9 +37,15 @@ const Workers = () => {
     })();
   }, []);
 
+  const handleAddWorker = (worker: Worker): void => {
+    axios.post('/workers/addWorker', worker).then(() => {
+      setWorkers([...workers, worker]);
+    });
+  };
+
   return (
     <StyledWorkers>
-      <AddWorkerForm />
+      <AddWorkerForm onAddWorker={handleAddWorker} />
 
       <StyledWorkersCard>
         <TableContainer component={Paper}>

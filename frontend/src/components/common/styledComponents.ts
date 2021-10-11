@@ -18,6 +18,14 @@ export const StyledButton = styled.button`
   }
 `;
 
+export const StyledForm = styled.form`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px;
+  gap: 30px;
+`;
+
 export const StyledInput = styled.input`
   width: 100%;
   min-width: 200px;

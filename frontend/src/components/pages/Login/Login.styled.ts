@@ -14,14 +14,6 @@ export const StyledLoginCard = styled.div`
   max-width: 500px;
 `;
 
-export const StyledLoginForm = styled.form`
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  padding: 30px;
-  gap: 30px;
-`;
-
 export const StyledLoading = styled.h4`
   font-weight: 500;
   text-align: center;

@@ -3,11 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { RootState } from '../../../store/slices/rootReducer';
 import { loginUser } from '../../../store/slices/userSlice/user';
-import { StyledInput, StyledCardHeader } from '../../common/styledComponents';
+import {
+  StyledInput,
+  StyledCardHeader,
+  StyledForm,
+} from '../../common/styledComponents';
 import {
   StyledLogin,
   StyledLoginCard,
-  StyledLoginForm,
   StyledLoading,
   StyledError,
   StyledSignInButton,
@@ -58,7 +61,7 @@ const Login = () => {
         {isLogging ? (
           <StyledLoading>Submitting...</StyledLoading>
         ) : (
-          <StyledLoginForm>
+          <StyledForm>
             <StyledInput
               id="login"
               type="text"
@@ -83,7 +86,7 @@ const Login = () => {
             >
               Sign in
             </StyledSignInButton>
-          </StyledLoginForm>
+          </StyledForm>
         )}
       </StyledLoginCard>
     </StyledLogin>
