@@ -13,7 +13,7 @@ export class CarService {
     return this.carRepository.find({ relations: ['client'] });
   }
 
-  findOne(id: string): Promise<Car> {
+  findOne(id: number): Promise<Car> {
     return this.carRepository.findOne(id);
   }
 

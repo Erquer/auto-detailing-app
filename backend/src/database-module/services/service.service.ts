@@ -17,6 +17,10 @@ export class ServiceService {
     return this.serviceRepository.findOne(id);
   }
 
+  getServicesByIds(ids: number[]) {
+    return this.serviceRepository.findByIds(ids);
+  }
+
   async remove(id: string): Promise<void> {
     await this.serviceRepository.delete(id);
   }

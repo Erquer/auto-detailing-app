@@ -4,9 +4,13 @@ import {
   InternalServerErrorException,
   Logger,
 } from '@nestjs/common';
-import {Between, Equal, Repository, UpdateResult} from 'typeorm';
+import { Between, Equal, Repository, UpdateResult } from 'typeorm';
 import { Order } from './order.entity';
 import { addDays, subWeeks } from 'date-fns';
+import { CarService } from '../cars/car.service';
+import { ServiceService } from '../services/service.service';
+import { ClientService } from '../clients/client.service';
+import { WorkerService } from '../workers/worker.service';
 
 @Injectable()
 export class OrderService {
@@ -14,6 +18,10 @@ export class OrderService {
   constructor(
     @Inject('ORDERS_REPOSITORY')
     private orderRepository: Repository<Order>,
+    private readonly carService: CarService,
+    private readonly servicesService: ServiceService,
+    private readonly clientService: ClientService,
+    private readonly workerService: WorkerService,
   ) {}
 
   findAll(): Promise<Order[]> {
@@ -31,7 +39,20 @@ export class OrderService {
   }
 
   async addOrder(order: Order) {
-    await this.orderRepository.save(order);
+    const client = await this.clientService.findOne(order.client.id);
+    const car = await this.carService.findOne(order.car.id);
+    const services = await this.servicesService.getServicesByIds(
+      order.service.map((service) => service.id),
+    );
+    const orderToAdd = new Order();
+    orderToAdd.service = services;
+    orderToAdd.car = car;
+    orderToAdd.client = client;
+    orderToAdd.worker = await this.workerService.findOne(order.worker.id);
+    orderToAdd.deadline = order.deadline;
+    orderToAdd.finishDate = order.finishDate;
+    orderToAdd.orderDate = order.orderDate || null;
+    await this.orderRepository.save(orderToAdd);
   }
 
   async finishOrder(orderId: number): Promise<UpdateResult> {

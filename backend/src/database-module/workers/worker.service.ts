@@ -13,7 +13,7 @@ export class WorkerService {
     return this.workersRepository.find();
   }
 
-  findOne(id: string): Promise<Workers> {
+  findOne(id: number): Promise<Workers> {
     return this.workersRepository.findOne(id);
   }
 

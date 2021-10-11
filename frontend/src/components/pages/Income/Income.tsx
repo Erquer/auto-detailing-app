@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { IncomeChart } from '../Dashboard/Income/IncomeChart';
 import { IncomeStyled } from './Income.styled';
 import { Order, OrderService } from '../../../services/OrderService';
@@ -17,8 +17,6 @@ const Income = () => {
     })();
   };
 
-  // eslint-disable-next-line no-console
-  useEffect(() => console.log(orders), [orders]);
   return (
     <IncomeStyled>
       <div>

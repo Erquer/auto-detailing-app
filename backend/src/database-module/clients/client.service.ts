@@ -13,7 +13,7 @@ export class ClientService {
     return this.clientRepository.find();
   }
 
-  findOne(id: string): Promise<Client> {
+  findOne(id: number): Promise<Client> {
     return this.clientRepository.findOne(id);
   }
 
