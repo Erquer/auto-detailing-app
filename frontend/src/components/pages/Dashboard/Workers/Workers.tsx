@@ -7,9 +7,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Button from '../../../common/Button/Button';
 import { StyledHeading } from '../Calendar/Calendar.styled';
 import { StyledWorkers } from './Workers.styled';
+import LinkButton from '../../../common/LinkButton/LinkButton';
 
 const useStyles = makeStyles({
   table: {
@@ -61,7 +61,7 @@ const Workers = () => {
         </TableContainer>
       </div>
       <div style={{ marginTop: '30px' }}>
-        <Button innerText="EDYTUJ PRACOWNIKÓW" to="/workers" />
+        <LinkButton innerText="EDYTUJ PRACOWNIKÓW" to="/workers" />
       </div>
     </StyledWorkers>
   );

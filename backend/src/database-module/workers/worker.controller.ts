@@ -16,8 +16,10 @@ export class WorkerController {
   constructor(private readonly workerService: WorkerService) {}
 
   @Get()
-  getWorkers(): Promise<Workers[]> {
-    return this.workerService.findAll();
+  async getWorkers(): Promise<Workers[]> {
+    const workers = await this.workerService.findAll();
+    console.log(workers);
+    return workers;
   }
 
   @Post('/addWorker')

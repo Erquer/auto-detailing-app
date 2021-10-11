@@ -9,8 +9,8 @@ import {
   DateNavigator,
   TodayButton,
 } from '@devexpress/dx-react-scheduler-material-ui';
-import Button from '../../../common/Button/Button';
 import { StyledCalendar, StyledHeading } from './Calendar.styled';
+import LinkButton from '../../../common/LinkButton/LinkButton';
 
 const schedulerData = [
   {
@@ -49,7 +49,7 @@ const Calendar = () => {
         </Paper>
       </div>
       <div style={{ marginTop: '30px' }}>
-        <Button innerText="DODAJ ZAMÓWIENIE" to="/orders" />
+        <LinkButton innerText="DODAJ ZAMÓWIENIE" to="/orders" />
       </div>
     </StyledCalendar>
   );

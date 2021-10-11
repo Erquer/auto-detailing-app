@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { MenuContainer } from './menu/MenuContainer';
+import { MenuContainer } from './Menu/MenuContainer';
 import '../styles.css';
 import reduxStore from '../store/store';
 import MainContainer from './app-container/MainContainer';

@@ -7,9 +7,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import Button from '../../../common/Button/Button';
 import { StyledOrders } from './Orders.styled';
 import { StyledHeading } from '../Calendar/Calendar.styled';
+import LinkButton from '../../../common/LinkButton/LinkButton';
 
 export const useStyles = makeStyles({
   table: {
@@ -71,7 +71,7 @@ const Orders = () => {
         </TableContainer>
       </div>
       <div style={{ marginTop: '30px' }}>
-        <Button innerText="ZOBACZ HISTORIE" to="/orders" />
+        <LinkButton innerText="ZOBACZ HISTORIE" to="/orders" />
       </div>
     </StyledOrders>
   );

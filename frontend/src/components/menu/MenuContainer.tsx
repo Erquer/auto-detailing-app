@@ -92,6 +92,18 @@ export const MenuContainer = () => {
             />
           )}
         />
+        <ListItem
+          button
+          component={(props: any) => (
+            <MenuItemLink
+              disabled={!isLogged}
+              to="/workers"
+              icon={<ImBug color="#fff" />}
+              primary="Workers"
+              {...props}
+            />
+          )}
+        />
         {!isLogged ? (
           <ListItem
             button

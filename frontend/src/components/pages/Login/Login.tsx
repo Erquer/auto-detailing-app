@@ -3,15 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { RootState } from '../../../store/slices/rootReducer';
 import { loginUser } from '../../../store/slices/userSlice/user';
+import { StyledInput, StyledCardHeader } from '../../common/styledComponents';
 import {
   StyledLogin,
   StyledLoginCard,
-  StyledLoginHeader,
   StyledLoginForm,
-  StyledInput,
-  StyledButton,
   StyledLoading,
   StyledError,
+  StyledSignInButton,
 } from './Login.styled';
 
 const Login = () => {
@@ -54,7 +53,7 @@ const Login = () => {
   return (
     <StyledLogin>
       <StyledLoginCard>
-        <StyledLoginHeader>Auto Detailing App</StyledLoginHeader>
+        <StyledCardHeader>Auto Detailing App</StyledCardHeader>
 
         {isLogging ? (
           <StyledLoading>Submitting...</StyledLoading>
@@ -77,13 +76,13 @@ const Login = () => {
               required
             />
             {error !== '' && <StyledError>{error}</StyledError>}
-            <StyledButton
+            <StyledSignInButton
               onClick={handleSubmit}
               type="submit"
               disabled={isLogging}
             >
               Sign in
-            </StyledButton>
+            </StyledSignInButton>
           </StyledLoginForm>
         )}
       </StyledLoginCard>

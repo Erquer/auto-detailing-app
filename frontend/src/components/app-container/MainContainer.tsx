@@ -12,6 +12,7 @@ const Orders = lazy(() => import('../pages/Orders/Orders'));
 const Login = lazy(() => import('../pages/Login/Login'));
 const Logout = lazy(() => import('../pages/Logout/Logout'));
 const Services = lazy(() => import('../pages/Services/Services'));
+const Workers = lazy(() => import('../pages/Workers/Workers'));
 const OrderHistory = lazy(
   () => import('../pages/OrderHistory/OrderHistoryPage'),
 );
@@ -34,7 +35,7 @@ const MainContainer = () => {
         <ProtectedRoute path="/history" component={OrderHistory} />
         <ProtectedRoute path="/orders" component={Orders} />
         <ProtectedRoute path="/income" component={Income} />
-        <ProtectedRoute path="/income" component={Income} />
+        <ProtectedRoute path="/workers" component={Workers} />
         <ProtectedRoute path="/" exact component={Dashboard} />
       </Layout>
     </React.Suspense>
