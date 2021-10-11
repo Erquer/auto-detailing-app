@@ -1,4 +1,4 @@
-/* eslint-disable max-len */
+/* eslint-disable */
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import {
@@ -23,17 +23,11 @@ import {
   TodayButton,
   CurrentTimeIndicator,
 } from '@devexpress/dx-react-scheduler-material-ui';
+import moment from 'moment';
 import { Order, OrderService } from '../../../services/OrderService';
 import { ClientService } from '../../../services/ClientService';
 
 const BooleanEditor = (props: any) => <AppointmentForm.BooleanEditor {...props} readOnly />;
-
-const car1 = {
-  id: 1,
-  color: 'Black',
-  model: 'Toyota',
-  registration: 'PO1236',
-};
 
 const isWeekOrMonthView = (viewName: string) => viewName === 'Week' || viewName === 'Month';
 
@@ -58,7 +52,6 @@ export default class Orders extends React.PureComponent {
 
   componentDidMount() {
     (async () => {
-      // eslint-disable-next-line no-unused-vars
       const [result, result2, result3, result4, result5] = await Promise.all(
         [OrderService.getWorkers(),
           OrderService.getServices(),
@@ -71,12 +64,20 @@ export default class Orders extends React.PureComponent {
       const allAppointments = result3.data.map((a) => ({
         allDay: false,
         startDate: a.orderDate,
-        workerId: a?.worker.id,
+        workerId: a?.worker?.id,
         service: a.service.map((serviceId) => serviceId.id),
-        // dupa: a.service.reduce((wholeServiceDuration, serviceDuration) => wholeServiceDuration += serviceDuration.serviceDurationTime, 0),
-        client: a.client.id }));
-
+        // endDate: a.service.reduce((wholeServiceDuration, serviceDuration) => wholeServiceDuration += serviceDuration.serviceDurationTime, 0),
+        client: a?.client?.id }));
       const allClients = result4.data.map((c) => ({ text: `${c.firstName} ${c.lastName}`, id: c.id }));
+      const allCars = result5.data.map((c) => ({ text: `${c.model} ${c.version} ${c.registration}`, id: c.id, clientId: c.client.id }));
+      const allClientsAndCars = [];
+      for (let i = 0; i < allClients.length; i += 1) {
+        for (let j = 0; j < allCars.length; j += 1) {
+          if (allCars[j].clientId === allClients[i].id) {
+            allClientsAndCars.push({ text: `${allClients[i].text} (${allCars[j].text})`, id: j });
+          }
+        }
+      }
       this.setState(
         { isLoading: false,
           data: allAppointments,
@@ -92,9 +93,9 @@ export default class Orders extends React.PureComponent {
             allowMultiple: true,
           },
           {
-            fieldName: 'client',
-            title: 'Client',
-            instances: allClients,
+            fieldName: 'clientAndCar',
+            title: 'Client and car',
+            instances: allClientsAndCars,
           },
           ],
           grouping: [{
@@ -108,19 +109,19 @@ export default class Orders extends React.PureComponent {
   }
 
   commitChanges({ added, changed, deleted }:any) {
-    if (added) {
-      const order: Order = {
-        id: 99,
-        orderDate: added.startDate,
-        worker: added.workerId,
-        client: added.client,
-        service: added.service,
-        deadline: added.startDate,
-        finishDate: added.startDate,
-        car: car1,
-      };
-      OrderService.addOrders(order);
-    }
+    // if (added) {
+    //   const order: Order = {
+    //     id: 7,
+    //     orderDate: moment(added.startDate).format('YYYY-MM-DD HH:mm'),
+    //     worker: added.workerId,
+    //     service: added.service,
+    //     deadline: null as any,
+    //     finishDate: null as any,
+    //     car: added.clientAndCar,
+    //     client: null as any,
+    //   };
+    //   OrderService.addOrders(order);
+    // }
     this.setState((state) => {
       let { data }:any = state;
       if (added) {

@@ -15,6 +15,8 @@ export interface Car {
   color: string;
   model: string;
   registration: string;
+  version: string;
+  client: Client;
 }
 
 export interface Service {
@@ -27,7 +29,7 @@ export interface Service {
 
 export interface Order {
   id: number;
-  orderDate: Date;
+  orderDate: string;
   deadline: Date;
   finishDate: Date;
   worker: Workers;
