@@ -68,4 +68,8 @@ export class OrderService {
   static async addOrders(order: Order): Promise<AxiosResponse<Order[]>> {
     return axios.post<Order[]>('/orders/addOrder', order);
   }
+
+  static async getCars(): Promise<AxiosResponse<Car[]>> {
+    return axios.get<Car[]>('/cars');
+  }
 }
